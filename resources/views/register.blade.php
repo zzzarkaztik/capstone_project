@@ -7,28 +7,63 @@
 </head>
 
 <body>
-    <div class="card m-5 p-5">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                aria-describedby="basic-addon1" />
+    @include('layouts/navbar')
+
+    <div class="vh-100 d-flex justify-content-center align-items-center text-center">
+
+        <div class="card-large m-5 p-5">
+            <img src="img/trident-logo.png" alt="trident logo" width="250px" class="mx-auto">
+            <form>
+                <!-- First Name input -->
+                <div class="form-outline my-4" data-mdb-input-init>
+                    <input type="text" class="form-control" name="first_name" />
+                    <label class="form-label">First Name</label>
+                </div>
+
+                <!-- Last Name input -->
+                <div class="form-outline my-4" data-mdb-input-init>
+                    <input type="text" class="form-control" name="last_name" />
+                    <label class="form-label">Last Name</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-outline my-4" data-mdb-input-init>
+                    <input type="email" class="form-control" name="email" />
+                    <label class="form-label">Email address</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4" data-mdb-input-init>
+                    <input type="password" class="form-control" name="password" />
+                    <label class="form-label">Password</label>
+                </div>
+
+                <!-- Passenger Type dropdown -->
+                <div class="form-outline mb-4" data-mdb-input-init>
+                    <select class="form-select" name="passenger_type">
+                        <option value="regular">Regular</option>
+                        <option value="senior_citizen">Senior Citizen</option>
+                        <option value="pwd">PWD</option>
+                        <option value="student">Student</option>
+                    </select>
+                    <label class="form-label">Passenger Type</label>
+                </div>
+                {{-- terms and conditions --}}
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" value="" id="terms_checkbox" />
+                    <label class="form-check-label" for="terms_checkbox">I accept the <a href="/terms">Terms and
+                            Conditions</a></label>
+                </div>
+                <!-- Submit button -->
+                <button type="button" class="btn btn-primary btn-block mb-4">Register</button>
+
+                <!-- Login link -->
+                <div class="text-center">
+                    <p>Already a member? <a href="/login">Login</a></p>
+                </div>
+            </form>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" />
-            <span class="input-group-text">.00</span>
-        </div>
-
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" />
-            <span class="input-group-text">@</span>
-            <input type="text" class="form-control" placeholder="Server" aria-label="Server" />
-        </div>
-
-        <div class="input-group">
-            <span class="input-group-text">With textarea</span>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
-        </div>
     </div>
 
 
