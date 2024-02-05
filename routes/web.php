@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::get('/register', function () {
 Route::get('/terms_and_conditions', function () {
     return view('tnc');
 });
+
+Route::get('/register/admin', [UserController::class, 'show_register']);
+Route::post('/register/admin', [UserController::class, 'register_admin']);
