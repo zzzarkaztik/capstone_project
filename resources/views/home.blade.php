@@ -32,7 +32,7 @@
                     <p>Embark on a voyage of possibilities with Trident Buslines. We don't just connect destinations; we
                         create the starting point for unforgettable journeys. Let every mile be a memory etched in the
                         story of your travels.</p>
-                    <a href="" class="btn rounded-pill btn-primary mb-2">BOOK NOW</a>
+                    <a href="" class="btn btn-primary mb-2">BOOK NOW</a>
                 </div>
             </div>
 
