@@ -16,7 +16,7 @@
             </a>
             <!-- Left links -->
             <div class="d-flex me-auto mb-lg-0">
-                <a class="nav-link me-2" href="#">HOME</a>
+                <a class="nav-link me-2" href="/">HOME</a>
                 <a class="nav-link me-2" href="#">TERMINALS</a>
                 <a class="nav-link " href="#">BOOK A TICKET</a>
             </div>

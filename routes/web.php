@@ -24,3 +24,6 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/terms_and_conditions', function () {
+    return view('tnc');
+});

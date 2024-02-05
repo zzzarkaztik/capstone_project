@@ -11,7 +11,7 @@
 
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
 
-        <div class="card-large m-5 p-5">
+        <div class="m-5 p-5">
             <img src="img/trident-logo.png" alt="trident logo" width="250px" class="mx-auto">
             <form>
                 <!-- First Name input -->
@@ -51,7 +51,8 @@
                 {{-- terms and conditions --}}
                 <div class="form-check mb-4">
                     <input class="form-check-input" type="checkbox" value="" id="terms_checkbox" />
-                    <label class="form-check-label" for="terms_checkbox">I accept the <a href="/terms">Terms and
+                    <label class="form-check-label" for="terms_checkbox">I accept the <a
+                            href="/terms_and_conditions">Terms and
                             Conditions</a></label>
                 </div>
                 <!-- Submit button -->
