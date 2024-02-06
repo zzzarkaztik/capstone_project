@@ -8,6 +8,7 @@
 
 <body class="mt-5 pt-2">
     @include('layouts/navbar')
+    @include('layouts/messages')
 
     {{-- Carousel --}}
     <!-- Carousel wrapper -->

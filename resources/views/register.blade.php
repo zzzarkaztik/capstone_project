@@ -8,12 +8,13 @@
 
 <body>
     @include('layouts/navbar')
-
+    @include('layouts/messages')
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
 
         <div class="m-5 p-5 w-50">
             <img src="img/trident-logo.png" alt="trident logo" width="250px">
-            <form>
+            <form action="/register" method="POST">
+                @csrf
                 <!-- First Name input -->
                 <div class="form-outline my-4" data-mdb-input-init>
                     <input type="text" class="form-control" name="first_name" />
@@ -34,18 +35,18 @@
 
                 <!-- Password input -->
                 <div class="form-outline mb-4" data-mdb-input-init>
-                    <input type="password" class="form-control" name="password" />
+                    <input type="password" class="form-control" name="pw" />
                     <label class="form-label">Password</label>
                 </div>
 
                 <div class="form-outline mb-4" data-mdb-input-init>
-                    <input type="password" class="form-control" name="confirm_password" />
+                    <input type="password" class="form-control" name="con_pw" />
                     <label class="form-label">Confirm Password</label>
                 </div>
 
                 <!-- Passenger Type dropdown -->
                 <div class="form-outline mb-4" data-mdb-input-init>
-                    <select class="form-select" name="passenger_type">
+                    <select class="form-select" name="type">
                         <option value="regular">Regular</option>
                         <option value="senior_citizen">Senior Citizen</option>
                         <option value="pwd">PWD</option>
@@ -60,7 +61,7 @@
                             Conditions</a></label>
                 </div>
                 <!-- Submit button -->
-                <button type="button" class="btn btn-primary btn-block mb-4">Register</button>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
 
                 <!-- Login link -->
                 <div class="text-center">

@@ -22,9 +22,9 @@ Route::get('/login', [UserController::class, 'show_login']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', [UserController::class, 'show_register_user']);
+Route::post('/register', [UserController::class, 'register_user']);
+
 Route::get('/terms_and_conditions', function () {
     return view('tnc');
 });
