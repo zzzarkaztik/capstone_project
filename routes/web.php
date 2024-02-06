@@ -28,7 +28,12 @@ Route::get('/register', function () {
 Route::get('/terms_and_conditions', function () {
     return view('tnc');
 });
-
+Route::get('/terms_and_conditions', function () {
+    return view('tnc');
+});
+Route::get('/book', function () {
+    return view('user_booking');
+});
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 });
