@@ -13,6 +13,43 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function logout()
+    {
+        if (Session::has('user_id')) {
+            Session::flush();
+        }
+
+        return redirect('login');
+    }
+
+    public function login(Request $r)
+    {
+        $user = User::where("email", "=", $r->email)
+            ->first();
+
+        if ($user) {
+            if (Hash::check($r->pw, $user->password)) {
+                Session::put('user_id', $user->user_id);
+                Session::put('first_name', $user->first_name);
+                Session::put('last_name', $user->last_name);
+                Session::put('email', $user->email);
+                Session::put('role', $user->role);
+                if (Session::get('role') == 'admin') {
+                    return redirect('/admin/dashboard');
+                }
+            } else {
+                return redirect('/login')->with('fail', 'Incorrect password.');
+            }
+        } else {
+            return redirect('/login')->with('fail', 'An account with that email does not exist.');
+        }
+    }
+
+    public function show_login()
+    {
+        return view('login');
+    }
+
     public function register_admin()
     {
         $user = new User;

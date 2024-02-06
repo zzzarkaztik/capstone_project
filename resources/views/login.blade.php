@@ -7,19 +7,20 @@
 </head>
 
 <body>
+    @include('layouts/messages')
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
         <div class="card-large m-5 p-5">
             <img src="img/trident-logo.png" alt="trident logo" width="250px" class="mx-auto">
             <form>
                 <!-- Email input -->
                 <div class="form-outline my-4" data-mdb-input-init>
-                    <input type="email" class="form-control" />
+                    <input type="email" name="email" class="form-control" />
                     <label class="form-label">Email address</label>
                 </div>
 
                 <!-- Password input -->
                 <div class="form-outline mb-4" data-mdb-input-init>
-                    <input type="password" class="form-control" />
+                    <input type="password" name="pw" class="form-control" />
                     <label class="form-label">Password</label>
                 </div>
 

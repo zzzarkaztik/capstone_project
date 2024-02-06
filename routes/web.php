@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [UserController::class, 'show_login']);
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/register', function () {
     return view('register');
