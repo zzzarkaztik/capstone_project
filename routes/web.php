@@ -34,6 +34,9 @@ Route::get('/terms_and_conditions', function () {
 Route::get('/book', function () {
     return view('user_booking');
 });
+Route::get('/passenger_info', function () {
+    return view('passenger_info');
+});
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 });
