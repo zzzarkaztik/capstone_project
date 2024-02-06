@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Navbar brand -->
             <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                <img src="img/trident-logo.svg" width="130px" alt="MDB Logo" loading="lazy" />
+                <img src="/img/trident-logo.svg" width="130px" alt="MDB Logo" loading="lazy" />
             </a>
             <!-- Left links -->
             <div class="d-flex me-auto mb-lg-0">
