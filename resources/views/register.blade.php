@@ -11,8 +11,8 @@
 
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
 
-        <div class="m-5 p-5">
-            <img src="img/trident-logo.png" alt="trident logo" width="250px" class="mx-auto">
+        <div class="m-5 p-5 w-50">
+            <img src="img/trident-logo.png" alt="trident logo" width="250px">
             <form>
                 <!-- First Name input -->
                 <div class="form-outline my-4" data-mdb-input-init>
@@ -38,6 +38,11 @@
                     <label class="form-label">Password</label>
                 </div>
 
+                <div class="form-outline mb-4" data-mdb-input-init>
+                    <input type="password" class="form-control" name="confirm_password" />
+                    <label class="form-label">Confirm Password</label>
+                </div>
+
                 <!-- Passenger Type dropdown -->
                 <div class="form-outline mb-4" data-mdb-input-init>
                     <select class="form-select" name="passenger_type">
@@ -50,9 +55,8 @@
                 </div>
                 {{-- terms and conditions --}}
                 <div class="form-check mb-4">
-                    <input class="form-check-input" type="checkbox" value="" id="terms_checkbox" />
-                    <label class="form-check-label" for="terms_checkbox">I accept the <a
-                            href="/terms_and_conditions">Terms and
+                    <input type="checkbox" value="" id="terms_checkbox" />
+                    <label for="terms_checkbox">I accept the <a href="/terms_and_conditions">Terms and
                             Conditions</a></label>
                 </div>
                 <!-- Submit button -->
