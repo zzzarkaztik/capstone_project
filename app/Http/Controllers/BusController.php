@@ -12,7 +12,18 @@ use App\Models\Transaction;
 
 class BusController extends Controller
 {
-    public function total_dashboard(Request $r)
+    public function show_buses()
+    {
+        $bus = Bus::query()
+            ->select('*')
+            ->join('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
+            ->join('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->get();
+
+        return view('buses', compact('bus'));
+    }
+
+    public function total_dashboard()
     {
         $total_routes = Bus::query()
             ->select(DB::raw('COUNT(*) AS total'))

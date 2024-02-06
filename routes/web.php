@@ -39,9 +39,14 @@ Route::get('/book', function () {
 Route::get('/passenger_info', function () {
     return view('passenger_info');
 });
-
 Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
 
+
+// Maynard 
+
+Route::get('/admin/buses', [BusController::class, 'show_buses']);
+
+// Maynard end
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
 
 Route::get('/register/admin', [UserController::class, 'show_register']);
