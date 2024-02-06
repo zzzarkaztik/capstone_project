@@ -18,15 +18,18 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', [UserController::class, 'show_login']);
-Route::post('/login', [UserController::class, 'login']);
-Route::get('/logout', [UserController::class, 'logout']);
+Route::get('/login', function () {
+    return view('login');
+});
 
 Route::get('/register', function () {
     return view('register');
 });
 Route::get('/terms_and_conditions', function () {
     return view('tnc');
+});
+Route::get('/about', function () {
+    return view('about');
 });
 Route::get('/book', function () {
     return view('user_booking');
