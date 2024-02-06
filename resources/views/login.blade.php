@@ -10,7 +10,7 @@
     @include('layouts/messages')
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
         <div class="card-large m-5 p-5">
-            <img src="img/trident-logo.png" alt="trident logo" width="250px" class="mx-auto">
+            <a href="/"><img src="img/trident-logo.png" alt="trident logo" width="250px" class="mx-auto"></a>
             <form action="/login" method="POST">
                 @csrf
                 <!-- Email input -->
@@ -47,6 +47,7 @@
                 <!-- Register buttons -->
                 <div class="text-center">
                     <p>Not a member? <a href="/register">Register</a></p>
+                    <a href="/">Proceed without an account</a>
                 </div>
             </form>
 

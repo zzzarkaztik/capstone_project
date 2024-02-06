@@ -3,7 +3,7 @@
     <!-- Container wrapper -->
     <div class="container-fluid">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <a class="navbar-brand mt-2" href="#">
             <img src="/img/trident-logo.svg" width="130px" alt="trident logo" loading="lazy" />
         </a>
         <!-- Left links -->
