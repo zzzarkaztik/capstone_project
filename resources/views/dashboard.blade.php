@@ -12,7 +12,7 @@
 
 
     <div id="content">
-        <div class="row gy-3 mb-3 mt-1">
+        <div class="row gy-3 mb-3">
             <div class="col-lg-3">
                 <div class="card border">
                     <div class="card-body">
@@ -37,7 +37,7 @@
                         </span>
                         <h4>$b->total_buses</h4>
 
-                        <a href="/admin/routes" class="btn btn-primary"><i class="ri-eye-fill"></i> View</a>
+                        <a href="/admin/buses" class="btn btn-primary"><i class="ri-eye-fill"></i> View</a>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                         </span>
                         <h4 class="text-warning">$s->total_schedules</h4>
 
-                        <a href="/admin/routes" class="btn btn-warning"><i class="ri-eye-fill"></i> View</a>
+                        <a href="/admin/schedules" class="btn btn-warning"><i class="ri-eye-fill"></i> View</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                             Total Bookings:
                         </span>
                         <h4 class="text-danger">$b->total_bookings</h4>
-                        <a href="/admin/routes" class="btn btn-danger"><i class="ri-eye-fill"></i> View</a>
+                        <a href="/admin/bookings" class="btn btn-danger"><i class="ri-eye-fill"></i> View</a>
                     </div>
                 </div>
             </div>

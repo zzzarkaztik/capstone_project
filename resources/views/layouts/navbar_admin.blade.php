@@ -3,14 +3,16 @@
     <!-- Container wrapper -->
     <div class="container-fluid">
         <!-- Navbar brand -->
-        <a class="navbar-brand mt-2" href="#">
-            <img src="/img/trident-logo.svg" width="130px" alt="trident logo" loading="lazy" />
-        </a>
+        <div>
+            <a class="navbar-brand" href="#">
+                <img src="/img/trident-logo.svg" width="130px" alt="trident logo" loading="lazy" />
+            </a>
+
+        </div>
         <!-- Left links -->
         <div class="d-flex me-auto mb-lg-0">
-            <a class="nav-link me-2" href="/admin/dashboard">DASHBOARD</a>
-            <a class="nav-link me-2" href="/admin/schedules">SCHEDULES</a>
-            <a class="nav-link " href="/admin/book">BOOK A TICKET</a>
+            <a class="nav-link me-2" href="/admin/dashboard"><i class="ri-notification-3-fill"></i> NOTIFICATIONS</a>
+            <a class="nav-link " href="/admin/book"><i class="ri-coupon-3-fill"></i> BOOK A TICKET</a>
         </div>
         <!-- Left links -->
 
