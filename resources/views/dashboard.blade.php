@@ -16,14 +16,14 @@
             <div class="col-lg-3">
                 <div class="card border">
                     <div class="card-body">
-                        <h5 class="card-title p-2 text-white text-center rounded"><i
+                        <h5 class="card-title p-2 text-white text-center rounded bg-success"><i
                                 class="ri-road-map-fill me-1"></i>Routes</h5>
                         <span class="card-text">
                             Total Routes:
                         </span>
-                        <h4>$r->total_routes</h4>
+                        <h4 class="text-success">$r->total_routes</h4>
 
-                        <a href="/admin/routes" class="btn btn-primary">View</a>
+                        <a href="/admin/routes" class="btn btn-success">View</a>
                     </div>
                 </div>
             </div>
@@ -44,27 +44,27 @@
             <div class="col-lg-3">
                 <div class="card border">
                     <div class="card-body">
-                        <h5 class="card-title p-2 text-white text-center rounded"><i
+                        <h5 class="card-title p-2 text-white text-center rounded bg-warning"><i
                                 class="ri-calendar-schedule-fill me-1"></i>Schedules</h5>
                         <span class="card-text">
                             Total Schedules:
                         </span>
-                        <h4>$s->total_schedules</h4>
+                        <h4 class="text-warning">$s->total_schedules</h4>
 
-                        <a href="/admin/routes" class="btn btn-primary">View</a>
+                        <a href="/admin/routes" class="btn btn-warning">View</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="card border">
                     <div class="card-body">
-                        <h5 class="card-title p-2 text-white text-center rounded"><i
+                        <h5 class="card-title p-2 text-white text-center rounded bg-danger"><i
                                 class="ri-coupon-3-fill me-1"></i>Bookings</h5>
                         <span class="card-text">
                             Total Bookings:
                         </span>
-                        <h4>$b->total_bookings</h4>
-                        <a href="/admin/routes" class="btn btn-primary">View</a>
+                        <h4 class="text-danger">$b->total_bookings</h4>
+                        <a href="/admin/routes" class="btn btn-danger">View</a>
                     </div>
                 </div>
             </div>
