@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\BusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +39,9 @@ Route::get('/book', function () {
 Route::get('/passenger_info', function () {
     return view('passenger_info');
 });
-Route::get('/admin/dashboard', function () {
-    return view('dashboard');
-});
+
+Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
+
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
 
 Route::get('/register/admin', [UserController::class, 'show_register']);
