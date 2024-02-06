@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::get('/passenger_info', function () {
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 });
+Route::get('/notifications', [TicketController::class, 'view_notifications']);
 
 Route::get('/register/admin', [UserController::class, 'show_register']);
 Route::post('/register/admin', [UserController::class, 'register_admin']);
