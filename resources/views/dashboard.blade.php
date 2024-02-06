@@ -19,22 +19,7 @@
     </div>
 
 
-    <script>
-        // JavaScript to handle active link highlighting
-        var sidebarLinks = document.querySelectorAll('#sidebar a');
-
-        sidebarLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                // Remove 'active' class from all links
-                sidebarLinks.forEach(function(innerLink) {
-                    innerLink.classList.remove('active');
-                });
-
-                // Add 'active' class to the clicked link
-                link.classList.add('active');
-            });
-        });
-    </script>
+    @include('layouts/sidenav_script')
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 </body>
 

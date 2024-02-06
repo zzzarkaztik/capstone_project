@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <!-- Navbar brand -->
         <a class="navbar-brand mt-2 mt-lg-0" href="#">
-            <img src="img/trident-logo.svg" width="130px" alt="trident logo" loading="lazy" />
+            <img src="/img/trident-logo.svg" width="130px" alt="trident logo" loading="lazy" />
         </a>
         <!-- Left links -->
         <div class="d-flex me-auto mb-lg-0">
