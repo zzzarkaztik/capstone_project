@@ -41,25 +41,6 @@ Route::get('/passenger_info', function () {
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 });
-Route::get('/admin/buses', function () {
-    return view('buses');
-});
-Route::get('/admin/routes', function () {
-    return view('routes');
-});
-Route::get('/admin/schedules', function () {
-    return view('schedules');
-});
-Route::get('/admin/drivers', function () {
-    return view('drivers');
-});
-Route::get('/admin/transactions', function () {
-    return view('transactions');
-});
-Route::get('/admin/book', function () {
-    return view('book');
-});
-
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
 
 Route::get('/register/admin', [UserController::class, 'show_register']);
