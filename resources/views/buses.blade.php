@@ -13,6 +13,7 @@
 
     <div id="content">
         <h1>Buses</h1>
+        <a href="/admin/buses/add" class="btn btn-success mb-2">+ ADD BUS</a>
         <table class="table table-hover">
             <tr>
                 <th>#</th>
@@ -28,7 +29,7 @@
                     <td>{{ $b->destination }}</td>
                     <td>{{ $b->last_name }}, {{ $b->first_name }}</td>
                     <td>
-                        <a href="#" class="btn btn-success">View</a>
+                        <a href="#" class="btn btn-primary">View</a>
                         <a href="#" class="btn btn-warning">Edit</a>
                         <a href="#" class="btn btn-danger">Delete</a>
                     </td>

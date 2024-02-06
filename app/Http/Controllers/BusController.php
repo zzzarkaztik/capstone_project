@@ -12,6 +12,11 @@ use App\Models\Transaction;
 
 class BusController extends Controller
 {
+    // Maynard
+    public function add_bus_form()
+    {
+        return view('add_buses');
+    }
     public function show_buses()
     {
         $bus = Bus::query()
@@ -22,6 +27,7 @@ class BusController extends Controller
 
         return view('buses', compact('bus'));
     }
+    // -end Maynard
 
     public function total_dashboard()
     {
