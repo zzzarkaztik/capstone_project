@@ -11,7 +11,8 @@
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
         <div class="card-large m-5 p-5">
             <img src="img/trident-logo.png" alt="trident logo" width="250px" class="mx-auto">
-            <form>
+            <form action="/login" method="POST">
+                @csrf
                 <!-- Email input -->
                 <div class="form-outline my-4" data-mdb-input-init>
                     <input type="email" name="email" class="form-control" />
@@ -41,7 +42,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
                 <!-- Register buttons -->
                 <div class="text-center">
