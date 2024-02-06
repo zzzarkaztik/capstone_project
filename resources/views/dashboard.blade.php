@@ -12,7 +12,7 @@
 
 
     <div id="content">
-        <div class="row">
+        <div class="row gy-3 mb-3">
             <div class="col-lg-3">
                 <div class="card border">
                     <div class="card-body">
@@ -68,8 +68,24 @@
 
         </div>
         <div class="row">
-            <div class="col-lg-9">
-                <img src="/img/graph.webp" class="card border" alt="place-holder">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                        <img src="https://mdbootstrap.com/img/new/standard/nature/111.webp" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15)"></div>
+                        </a>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="card-text">
+                            Some quick example text to build on the card title and make up the bulk of the
+                            card's content.
+                        </p>
+
+
+                    </div>
+                </div>
             </div>
         </div>
 
