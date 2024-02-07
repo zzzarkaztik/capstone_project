@@ -36,6 +36,7 @@ Route::get('/about', function () {
 Route::get('/book', function () {
     return view('user_booking');
 });
+
 Route::get('/passenger_info', function () {
     return view('passenger_info');
 });
@@ -52,3 +53,7 @@ Route::get('/notifications', [TicketController::class, 'view_notifications']);
 
 Route::get('/register/admin', [UserController::class, 'show_register']);
 Route::post('/register/admin', [UserController::class, 'register_admin']);
+// Rafael
+Route::get('/profile', [UserController::class, 'show_profile']);
+Route::get('/edit_profile', [UserController::class, 'edit_profile']);
+// 

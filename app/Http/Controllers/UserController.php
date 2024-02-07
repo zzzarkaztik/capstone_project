@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function edit_profile()
+    {
+        return view('edit_profile');
+    }
+    public function show_profile(Request $request)
+    {
+        $user = User::query()
+            ->select('*')
+            ->where('user_id', '=', Session::get('user_id'))
+            ->get()
+            ->first();
+
+        return view('profile', compact('user'));
+    }
+
     public function register_user(Request $r)
     {
         $this->validate($r, [
@@ -56,8 +71,7 @@ class UserController extends Controller
 
     public function login(Request $r)
     {
-        $user = User::where("email", "=", $r->email)
-            ->first();
+        $user = User::where("email", "=", $r->email)->first();
 
         if ($user) {
             if (Hash::check($r->pw, $user->password)) {
@@ -68,6 +82,8 @@ class UserController extends Controller
                 Session::put('role', $user->role);
                 if (Session::get('role') == 'admin') {
                     return redirect('/admin/dashboard');
+                } elseif (Session::get('role') == 'user') {
+                    return redirect('/book');
                 }
             } else {
                 return redirect('/login')->with('fail', 'Incorrect password.');
@@ -76,6 +92,7 @@ class UserController extends Controller
             return redirect('/login')->with('fail', 'An account with that email does not exist.');
         }
     }
+
 
     public function show_login()
     {
