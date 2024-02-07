@@ -16,15 +16,15 @@
         <a href="/admin/buses/add" class="btn btn-success mb-2">+ ADD BUS</a>
         <table class="table table-hover">
             <tr>
-                <th>#</th>
+                <th>Bus ID</th>
                 <th>Plate Number</th>
                 <th>Destination</th>
                 <th>Driver</th>
                 <th>Action</th>
             </tr>
-            @foreach ($bus as $key => $b)
+            @foreach ($bus as $b)
                 <tr>
-                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $b->bus_id }}</td>
                     <td>{{ $b->plate_number }}</td>
                     <td>{{ $b->destination }}</td>
                     <td>{{ $b->full_name }}</td>

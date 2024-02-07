@@ -20,7 +20,8 @@
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Birthdate</th>
-                <th>Assigned Bus</th>
+                <th>Assigned Bus ID</th>
+                <th>Actions</th>
             </tr>
             @foreach ($driver as $key => $d)
                 <tr>
@@ -28,6 +29,7 @@
                     <td>{{ $d->last_name }}, {{ $d->first_name }}</td>
                     <td>{{ $d->gender }}</td>
                     <td>{{ $d->birthdate }}</td>
+                    <td>{{ $d->bus_id }}</td>
 
                     <td>
                         <a href="#" class="btn btn-primary">View</a>

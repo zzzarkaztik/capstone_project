@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 class DriverController extends Controller
 {
     // Maynard
+
+    public function driver_profile(string $id)
+    {
+        $driver = Driver::query()
+            ->select('*')
+            ->where('driver_id', '=', $id)
+            ->get()
+            ->first();
+
+        return view('driver_profile', compact('driver'));
+    }
     public function add_driver(request $r)
     {
         $driver = new Driver;
@@ -18,6 +29,8 @@ class DriverController extends Controller
         $driver->gender = $r->input('gender');
         $driver->birthdate = $r->input('birthdate');
         $driver->save();
+
+        return redirect('/admin/drivers')->with('success', 'New Driver Added');
     }
     public function add_driver_form()
     {
