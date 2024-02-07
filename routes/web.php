@@ -49,6 +49,7 @@ Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
 Route::get('/admin/buses/add', [BusController::class, 'add_bus_form']);
 Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
 Route::get('/admin/buses', [BusController::class, 'show_buses']);
+Route::delete('/admin/buses/{id}', [BusController::class, 'delete_bus']);
 
 Route::get('/admin/drivers', [DriverController::class, 'show_drivers']);
 Route::get('/admin/drivers/add', [DriverController::class, 'add_driver_form']);

@@ -14,6 +14,15 @@ use App\Models\Transaction;
 class BusController extends Controller
 {
     // Maynard 
+    public function delete_bus(string $id)
+    {
+        $bus = Bus::where('bus_id', '=', $id)
+            ->delete();
+
+        return redirect('/admin/buses')
+            ->with('success', 'Successfully deleted bus.');
+    }
+
     public function add_bus(Request $r)
     {
         $bus = new Bus;

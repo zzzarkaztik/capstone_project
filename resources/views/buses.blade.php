@@ -31,8 +31,10 @@
                     <td>
                         <a href="#" class="btn btn-primary">View</a>
                         <a href="#" class="btn btn-warning">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a data-bs-toggle="modal" data-bs-target="#delete_{{ $b->bus_id }}"
+                            class="btn btn-danger">Delete</a>
                     </td>
+                    @include('layouts/delete_bus')
                 </tr>
             @endforeach
         </table>
