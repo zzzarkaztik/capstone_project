@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-outline border rounded">
-                    <input type="date" name="bus_service_date" class="form-control">
+                    <input type="date" name="bus_service_start" class="form-control">
                 </div>
                 <label class="mb-5 form-label">Service Start Date</label>
 
