@@ -9,7 +9,6 @@
 <body class="mt-5 pt-2">
     @include('layouts/navbar')
     @include('layouts/sidenav')
-    @include('layouts/messages')
 
     <div id="content">
         <h1>Routes</h1>
