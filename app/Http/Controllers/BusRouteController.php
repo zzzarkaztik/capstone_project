@@ -17,6 +17,31 @@ class BusRouteController extends Controller
             ->with('success', 'Successfully deleted route.');
     }
 
+    public function edit_route(Request $r, string $id)
+    {
+        $route = BusRoute::where('bus_route_id', '=', $id)
+            ->update(
+                [
+                    'origin' => $r->input('origin'),
+                    'destination' => $r->input('destination'),
+                    'kilometers' => $r->input('kilometers'),
+                    'price' => $r->input('price'),
+                ]
+            );
+
+        return redirect('/admin/routes')->with('success', 'Successfully edited route.');
+    }
+
+    public function edit_route_form(string $id)
+    {
+        $route = BusRoute::query()
+            ->select('*')
+            ->where('bus_route_id', '=', $id)
+            ->get()
+            ->first();
+        return view('edit_bus_routes', compact('route'));
+    }
+
     public function add_route(Request $r)
     {
         $route = new BusRoute;
@@ -36,7 +61,7 @@ class BusRouteController extends Controller
             ->select('*')
             ->get();
 
-        return view('routes', compact('bus_routes'));
+        return view('bus_routes', compact('bus_routes'));
     }
 
     public function add_route_form()

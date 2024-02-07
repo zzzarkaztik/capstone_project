@@ -31,7 +31,7 @@
                 <td>{{$br -> price}}</td>
                 <td>
                     <a href="#" class="btn btn-primary">View</a>
-                    <a href="#" class="btn btn-warning">Edit</a>
+                    <a href="/admin/routes/edit/{{$br -> bus_route_id}}" class="btn btn-warning">Edit</a>
                     <a data-bs-toggle="modal" data-bs-target="#delete_{{$br -> bus_route_id}}" class="btn btn-danger">Delete</a>
                 </td>
                 @include('layouts/delete_route')
