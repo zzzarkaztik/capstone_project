@@ -63,12 +63,12 @@ class BusController extends Controller
 
     public function total_dashboard()
     {
-        $total_routes = Bus::query()
-            ->select(DB::raw('COUNT(*) AS total'))
+        $total_buses = Bus::query()
+            ->select(DB::raw('COUNT(plate_number) AS total'))
             ->get()
             ->first();
 
-        $total_buses = BusRoute::query()
+        $total_routes = BusRoute::query()
             ->select(DB::raw('COUNT(*) AS total'))
             ->get()
             ->first();

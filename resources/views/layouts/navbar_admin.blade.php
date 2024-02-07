@@ -20,13 +20,13 @@
         <div class="d-flex align-items-center">
             <!-- Avatar -->
             <div class="dropdown">
-                <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
-                    id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
+                <a class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
                         class="border border-solid rounded-circle" height="40"
                         alt="Black and White Portrait of a Man" loading="lazy" />
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                         <a class="dropdown-item" href="#">My profile</a>
                     </li>
