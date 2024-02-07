@@ -23,17 +23,17 @@
                 <th>Action</th>
             </tr>
             @foreach ($bus as $key => $b)
-            <tr>
-                <td>{{ $key + 1 }}</td>
-                <td>{{ $b->plate_number }}</td>
-                <td>{{ $b->destination }}</td>
-                <td>{{ $b->full_name }}</td>
-                <td>
-                    <a href="#" class="btn btn-primary">View</a>
-                    <a href="#" class="btn btn-warning">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $b->plate_number }}</td>
+                    <td>{{ $b->destination }}</td>
+                    <td>{{ $b->full_name }}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">View</a>
+                        <a href="#" class="btn btn-warning">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
             @endforeach
         </table>
     </div>

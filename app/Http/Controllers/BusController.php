@@ -19,7 +19,7 @@ class BusController extends Controller
         $bus = new Bus;
         $bus->plate_number = $r->input('plate_number');
         $bus->driver_id = $r->input('driver_id');
-        $bus->bus_route_id = $r->input('busroute_id');
+        $bus->bus_route_id = $r->input('bus_route_id');
         $bus->service_status = $r->input('service_status');
         $bus->bus_service_start = $r->input('bus_service_start');
         $bus->save();
@@ -44,16 +44,26 @@ class BusController extends Controller
     public function show_buses()
     {
         $bus = Bus::query()
-            ->select('buses.bus_id', 'destination', 'plate_number', DB::raw("CONCAT(last_name, ', ', first_name) as full_name"))
+            ->select('buses.*', 'd.*', 'br.*', \DB::raw("CONCAT(d.last_name, ' ', d.first_name) AS full_name"))
             ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
             ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->whereNotNull('buses.driver_id')
+            ->whereNotNull('buses.bus_route_id')
             ->unionAll(
                 Bus::query()
-                    ->select('buses.bus_id', 'destination', 'plate_number', DB::raw("CONCAT(last_name, ', ', first_name) as full_name"))
+                    ->select('buses.*', 'd.*', 'br.*', \DB::raw("CONCAT(d.last_name, ' ', d.first_name) AS full_name"))
                     ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
                     ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
                     ->whereNull('buses.driver_id')
-                    ->orWhereNull('buses.bus_route_id')
+                    ->whereNotNull('buses.bus_route_id')
+            )
+            ->unionAll(
+                Bus::query()
+                    ->select('buses.*', 'd.*', 'br.*', \DB::raw("CONCAT(d.last_name, ' ', d.first_name) AS full_name"))
+                    ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
+                    ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+                    ->whereNotNull('buses.driver_id')
+                    ->whereNull('buses.bus_route_id')
             )
             ->get();
 
