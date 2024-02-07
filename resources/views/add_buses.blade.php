@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts/head')
-    <title>Register | TRIDENT BUSLINES</title>
+    <title>Add Bus | ADMIN | TRIDENT BUSLINES</title>
 </head>
 
 <body>
@@ -14,61 +14,40 @@
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
 
         <div class="m-5 p-5 w-50">
-            <img src="img/trident-logo.png" alt="trident logo" width="250px">
+            <h1>ADD NEW BUS</h1>
             <form action="/register" method="POST">
                 @csrf
-                <!-- First Name input -->
+
                 <div class="form-outline my-4" data-mdb-input-init>
-                    <input type="text" class="form-control" name="first_name" />
-                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="plate_number" />
+                    <label class="form-label">Plate Number</label>
                 </div>
 
-                <!-- Last Name input -->
                 <div class="form-outline my-4" data-mdb-input-init>
-                    <input type="text" class="form-control" name="last_name" />
-                    <label class="form-label">Last Name</label>
-                </div>
-
-                <!-- Email input -->
-                <div class="form-outline my-4" data-mdb-input-init>
-                    <input type="email" class="form-control" name="email" />
-                    <label class="form-label">Email address</label>
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4" data-mdb-input-init>
-                    <input type="password" class="form-control" name="pw" />
-                    <label class="form-label">Password</label>
+                    <input type="number" class="form-control" name="bus_route_id" />
+                    <label class="form-label">Bus Route ID</label>
                 </div>
 
                 <div class="form-outline mb-4" data-mdb-input-init>
-                    <input type="password" class="form-control" name="con_pw" />
-                    <label class="form-label">Confirm Password</label>
-                </div>
-
-                <!-- Passenger Type dropdown -->
-                <div class="form-outline mb-4" data-mdb-input-init>
-                    <select class="form-select" name="type">
-                        <option value="regular">Regular</option>
-                        <option value="senior_citizen">Senior Citizen</option>
-                        <option value="pwd">PWD</option>
-                        <option value="student">Student</option>
+                    <select class="form-select" name="driver">
+                        <option value="">No Assigned Driver</option>
+                        @foreach ($driver as $d)
+                            <option value="{{ $d->driver_id }}">{{ $d->last_name }}, {{ $d->first_name }}</option>
+                        @endforeach
                     </select>
-                    <label class="form-label">Passenger Type</label>
+                    <label class="form-label">Assigned Driver</label>
                 </div>
-                {{-- terms and conditions --}}
-                <div class="form-check mb-4">
-                    <input type="checkbox" value="" id="terms_checkbox" />
-                    <label for="terms_checkbox">I accept the <a href="/terms_and_conditions">Terms and
-                            Conditions</a></label>
-                </div>
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
 
-                <!-- Login link -->
-                <div class="text-center">
-                    <p>Already a member? <a href="/login">Login</a></p>
+                <div class="form-outline mb-4" data-mdb-input-init>
+                    <select class="form-select" name="driver">
+                        <option value="in_service">In Service</option>
+                        <option value="not_in_service">Not In Service</option>
+                    </select>
+                    <label class="form-label">Service Status</label>
                 </div>
+
+                <button type="submit" class="btn btn-primary btn-block mb-4">Save</button>
+
             </form>
         </div>
 

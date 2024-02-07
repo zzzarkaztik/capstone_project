@@ -7,16 +7,22 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Bus;
 use App\Models\BusRoute;
+use App\Models\Driver;
 use App\Models\BusSchedule;
 use App\Models\Transaction;
 
 class BusController extends Controller
 {
-    // Maynard
+    // Maynard 
     public function add_bus_form()
     {
-        return view('add_buses');
+        $driver = Driver::query()
+            ->select('driver_id', 'last_name', 'first_name')
+            ->get();
+
+        return view('add_buses', compact('driver'));
     }
+
     public function show_buses()
     {
         $bus = Bus::query()
