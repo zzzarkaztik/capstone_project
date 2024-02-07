@@ -29,8 +29,8 @@
                     <select class="form-select" name="bus_route_id">
                         <option value="">No Assigned Route</option>
                         @foreach ($bus_route as $br)
-                            <option value="{{ $br->bus_route_id }}">{{ $br->bus_route_id }} ({{ $br->destination }})
-                            </option>
+                        <option value="{{ $br->bus_route_id }}">{{ $br->bus_route_id }} ({{ $br->destination }})
+                        </option>
                         @endforeach
                     </select>
                     <label class="form-label">Bus Route ID</label>
@@ -40,7 +40,7 @@
                     <select class="form-select" name="driver_id">
                         <option value="">No Assigned Driver</option>
                         @foreach ($driver as $d)
-                            <option value="{{ $d->driver_id }}">{{ $d->last_name }}, {{ $d->first_name }}</option>
+                        <option value="{{ $d->driver_id }}">{{ $d->last_name }}, {{ $d->first_name }}</option>
                         @endforeach
                     </select>
                     <label class="form-label">Assigned Driver</label>
