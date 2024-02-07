@@ -12,20 +12,16 @@
 
     {{-- Carousel --}}
     <!-- Carousel wrapper -->
-    <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" data-mdb-carousel-init>
-        <!-- Indicators -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="0" class="active"
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1"
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-            <button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2"
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
         </div>
-
-        <!-- Inner -->
         <div class="carousel-inner">
-            <!-- Single item -->
             <div class="carousel-item active">
                 <img src="img/assets/1.jpg" class="d-block w-100" alt="bus in the speed force" />
                 <div class="carousel-caption d-none d-md-block">
@@ -36,8 +32,6 @@
                     <a href="" class="btn btn-primary mb-2">BOOK NOW</a>
                 </div>
             </div>
-
-            <!-- Single item -->
             <div class="carousel-item">
                 <img src="img/assets/2.jpg" class="d-block w-100" alt="best seats in bus" />
                 <div class="carousel-caption d-none d-md-block">
@@ -47,8 +41,6 @@
                         satisfying experience. Discover a new level of convenience with Trident.</p>
                 </div>
             </div>
-
-            <!-- Single item -->
             <div class="carousel-item">
                 <img src="img/assets/3.jpg" class="d-block w-100" alt="trident bus garage" />
                 <div class="carousel-caption d-none d-md-block">
@@ -60,16 +52,13 @@
                 </div>
             </div>
         </div>
-        <!-- Inner -->
-
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample"
-            data-mdb-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample"
-            data-mdb-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
