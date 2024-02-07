@@ -44,12 +44,12 @@ class BusController extends Controller
     public function show_buses()
     {
         $bus = Bus::query()
-            ->select('*')
+            ->select('buses.bus_id', 'destination', 'plate_number', DB::raw("CONCAT(last_name, ', ', first_name) as full_name"))
             ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
             ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
             ->unionAll(
                 Bus::query()
-                    ->select('*')
+                    ->select('buses.bus_id', 'destination', 'plate_number', DB::raw("CONCAT(last_name, ', ', first_name) as full_name"))
                     ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
                     ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
                     ->whereNull('buses.driver_id')
