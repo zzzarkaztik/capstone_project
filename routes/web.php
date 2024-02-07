@@ -44,8 +44,8 @@ Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
 
 
 // Maynard 
-Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
 Route::get('/admin/buses/add', [BusController::class, 'add_bus_form']);
+Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
 Route::get('/admin/buses', [BusController::class, 'show_buses']);
 
 // Maynard end

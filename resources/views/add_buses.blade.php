@@ -11,19 +11,21 @@
     @include('layouts/navbar')
     @include('layouts/sidenav')
 
-    <div class="vh-100 d-flex justify-content-center align-items-center text-center">
+    <div class="vh-100 d-flex justify-content-center text-center">
+        @include('layouts/messages')
 
         <div class="m-5 p-5 w-50">
+
             <h1>ADD NEW BUS</h1>
-            <form action="/register" method="POST">
+            <form action="/admin/buses/add" method="POST">
                 @csrf
 
-                <div class="form-outline my-4" data-mdb-input-init>
+                <div class="form-outline my-4">
                     <input type="text" class="form-control" name="plate_number" />
                     <label class="form-label">Plate Number</label>
                 </div>
 
-                <div class="form-outline mb-4" data-mdb-input-init>
+                <div class="form-outline mb-4">
                     <select class="form-select" name="bus_route_id">
                         <option value="">No Assigned Route</option>
                         @foreach ($bus_route as $br)
@@ -34,8 +36,8 @@
                     <label class="form-label">Bus Route ID</label>
                 </div>
 
-                <div class="form-outline mb-4" data-mdb-input-init>
-                    <select class="form-select" name="driver">
+                <div class="form-outline mb-4">
+                    <select class="form-select" name="driver_id">
                         <option value="">No Assigned Driver</option>
                         @foreach ($driver as $d)
                             <option value="{{ $d->driver_id }}">{{ $d->last_name }}, {{ $d->first_name }}</option>
@@ -44,8 +46,8 @@
                     <label class="form-label">Assigned Driver</label>
                 </div>
 
-                <div class="form-outline mb-4" data-mdb-input-init>
-                    <select class="form-select" name="driver">
+                <div class="form-outline mb-4">
+                    <select class="form-select" name="service_status">
                         <option value="in_service">In Service</option>
                         <option value="not_in_service">Not In Service</option>
                     </select>
