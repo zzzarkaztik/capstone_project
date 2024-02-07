@@ -51,7 +51,8 @@
                         </span>
                         <h4 class="text-warning">{{ $total_schedules->total }}</h4>
 
-                        <a href="/admin/schedules" class="btn btn-warning"><i class="ri-eye-fill"></i> View</a>
+                        <a href="/admin/schedules" class="btn btn-warning text-white"><i class="ri-eye-fill"></i>
+                            View</a>
                     </div>
                 </div>
             </div>

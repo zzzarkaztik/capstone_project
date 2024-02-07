@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\BusController;
+use App\Http\Controllers\DriverController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +45,8 @@ Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
 
 
 // Maynard 
-
 Route::get('/admin/buses/add', [BusController::class, 'add_bus_form']);
+Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
 Route::get('/admin/buses', [BusController::class, 'show_buses']);
 
 // Maynard end
