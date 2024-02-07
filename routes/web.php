@@ -52,6 +52,7 @@ Route::get('/admin/buses', [BusController::class, 'show_buses']);
 
 Route::get('/admin/drivers', [DriverController::class, 'show_drivers']);
 Route::get('/admin/drivers/add', [DriverController::class, 'add_driver_form']);
+Route::post('/admin/drivers/add', [DriverController::class, 'add_driver']);
 
 
 // Maynard end

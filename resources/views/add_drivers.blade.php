@@ -21,7 +21,7 @@
                 @csrf
 
                 <div class="form-outline my-4">
-                    <input type="text" class="form-control" name="last_name" />
+                    <input type="text" class="form-control" name="first_name" />
                     <label class="form-label">First Name</label>
                 </div>
 
@@ -42,21 +42,24 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                    <select class="form-select" name="service_status">
-                        <option value="in_service">In Service</option>
-                        <option value="not_in_service">Not In Service</option>
+                    <select class="form-select" name="gender">
+                        <option disabled selected>Select One</option>
+                        <option disabled>----------</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
                     </select>
-                    <label class="form-label">Service Status</label>
+                    <label class="form-label">Gender</label>
                 </div>
 
                 <div class="form-outline rounded">
-                    <input type="date" name="bus_service_date" class="form-control">
+                    <input type="date" name="birthdate" class="form-control">
                 </div>
-                <label class="mb-5 form-label">Service Start Date</label>
+                <label class="mb-5 form-label">Birthdate</label>
 
                 <br>
 
-                <button type="submit" class="btn btn-primary btn-block w-100">Save</button>
+                <button type="submit" class="btn btn-primary btn-block w-100">Submit</button>
 
             </form>
         </div>

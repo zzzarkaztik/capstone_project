@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class DriverController extends Controller
 {
+    // Maynard
+    public function add_driver()
+    {
+    }
     public function add_driver_form()
     {
         $bus = Bus::query()
@@ -25,4 +29,5 @@ class DriverController extends Controller
 
         return view('drivers', compact('driver'));
     }
+    // -end Maynard
 }

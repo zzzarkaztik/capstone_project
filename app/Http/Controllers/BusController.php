@@ -19,7 +19,7 @@ class BusController extends Controller
         $bus = new Bus;
         $bus->plate_number = $r->input('plate_number');
         $bus->driver_id = $r->input('driver_id');
-        $bus->bus_route_id = $r->input('busroute_id');
+        $bus->bus_route_id = $r->input('bus_route_id');
         $bus->service_status = $r->input('service_status');
         $bus->bus_service_start = $r->input('bus_service_start');
         $bus->save();
