@@ -56,6 +56,7 @@ Route::get('/admin/buses', [BusController::class, 'show_buses']);
 Route::get('/admin/routes/add', [BusRouteController::class, 'add_route_form']);
 Route::get('/admin/routes', [BusRouteController::class, 'show_route']);
 Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
+Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
 // Keith
 
 Route::get('/notifications', [TicketController::class, 'view_notifications']);

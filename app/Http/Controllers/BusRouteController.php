@@ -8,6 +8,15 @@ use App\Models\BusRoute;
 
 class BusRouteController extends Controller
 {
+    public function delete_route(string $id)
+    {
+        $route = BusRoute::where('bus_route_id', '=', $id)
+            ->delete();
+
+        return redirect('/admin/routes')
+            ->with('success', 'Successfully deleted route.');
+    }
+
     public function add_route(Request $r)
     {
         $route = new BusRoute;
