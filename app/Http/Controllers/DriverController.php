@@ -9,7 +9,14 @@ use Illuminate\Http\Request;
 class DriverController extends Controller
 {
     // Maynard
+    public function delete_driver(string $id)
+    {
+        $driver = Driver::where('driver_id', '=', $id)
+            ->delete();
 
+        return redirect('/admin/drivers')
+            ->with('success', 'Successfully deleted driver.');
+    }
     public function driver_profile(string $id)
     {
         $driver = Driver::query()

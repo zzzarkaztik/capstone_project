@@ -54,6 +54,7 @@ Route::get('/admin/drivers', [DriverController::class, 'show_drivers']);
 Route::get('/admin/drivers/add', [DriverController::class, 'add_driver_form']);
 Route::post('/admin/drivers/add', [DriverController::class, 'add_driver']);
 Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
+Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
 
 
 

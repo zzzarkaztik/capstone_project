@@ -32,11 +32,13 @@
                     <td>{{ $d->bus_id }}</td>
 
                     <td>
-                        <a href="#" class="btn btn-primary">View</a>
+                        <a href="/admin/drivers/{{ $d->driver_id }}" class="btn btn-primary">View</a>
                         <a href="#" class="btn btn-warning">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a data-bs-toggle="modal" data-bs-target="#delete_{{ $d->driver_id }}"
+                            class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
+                @include('layouts/delete_driver')
             @endforeach
         </table>
     </div>
