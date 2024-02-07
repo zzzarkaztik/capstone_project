@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\BusController;
+use App\Http\Controllers\BusRouteController;
 use App\Http\Controllers\DriverController;
 
 /*
@@ -49,6 +50,13 @@ Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
 Route::get('/admin/buses', [BusController::class, 'show_buses']);
 
 // Maynard end
+
+// Keith
+Route::get('/admin/routes/add', [BusRouteController::class, 'add_route_form']);
+Route::get('/admin/routes', [BusRouteController::class, 'show_route']);
+Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
+// Keith
+
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
 
 Route::get('/register/admin', [UserController::class, 'show_register']);
