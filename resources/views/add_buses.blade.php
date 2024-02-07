@@ -23,8 +23,14 @@
                     <label class="form-label">Plate Number</label>
                 </div>
 
-                <div class="form-outline my-4" data-mdb-input-init>
-                    <input type="number" class="form-control" name="bus_route_id" />
+                <div class="form-outline mb-4" data-mdb-input-init>
+                    <select class="form-select" name="bus_route_id">
+                        <option value="">No Assigned Route</option>
+                        @foreach ($bus_route as $br)
+                            <option value="{{ $br->bus_route_id }}">{{ $br->bus_route_id }} ({{ $br->destination }})
+                            </option>
+                        @endforeach
+                    </select>
                     <label class="form-label">Bus Route ID</label>
                 </div>
 

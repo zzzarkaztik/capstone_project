@@ -16,11 +16,15 @@ class BusController extends Controller
     // Maynard 
     public function add_bus_form()
     {
+        $bus_route = BusRoute::query()
+            ->select('bus_route_id', 'destination')
+            ->get();
+
         $driver = Driver::query()
             ->select('driver_id', 'last_name', 'first_name')
             ->get();
 
-        return view('add_buses', compact('driver'));
+        return view('add_buses', compact('driver', 'bus_route'));
     }
 
     public function show_buses()
