@@ -7,7 +7,7 @@
 
 </head>
 
-<body>
+<body class="mt-5 pt-2">
     @include('layouts/navbar')
     @include('layouts/sidenav')
 
@@ -57,7 +57,9 @@
                 </div>
                 <label class="mb-5 form-label">Service Start Date</label>
 
-                <button type="submit" class="btn btn-primary btn-block mb-4">Save</button>
+                <br>
+
+                <button type="submit" class="btn btn-primary btn-block w-100">Save</button>
 
             </form>
         </div>
