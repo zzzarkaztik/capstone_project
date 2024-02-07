@@ -63,6 +63,7 @@ Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
 Route::get('/admin/routes/add', [BusRouteController::class, 'add_route_form']);
 Route::get('/admin/routes', [BusRouteController::class, 'show_route']);
 Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
+Route::put('/admin/routes/{id}', [BusRouteController::class, 'edit_route']);
 Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
 // Keith
 
