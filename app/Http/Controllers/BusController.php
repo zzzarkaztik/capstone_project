@@ -16,12 +16,13 @@ class BusController extends Controller
     // Maynard 
     public function delete_bus(string $id)
     {
-        $bus = Bus::where('bus_id', '=', $id)
+        Bus::where('bus_id', '=', $id)
             ->delete();
 
         return redirect('/admin/buses')
             ->with('success', 'Successfully deleted bus.');
     }
+
 
     public function add_bus(Request $r)
     {
@@ -33,10 +34,24 @@ class BusController extends Controller
         $bus->bus_service_start = $r->input('bus_service_start');
         $bus->save();
 
-        return redirect('admin/buses')->with('success', 'new bus added');
+        $b = Bus::query()
+            ->select('*')
+            ->orderBy('bus_id', 'DESC')
+            ->get()
+            ->first();
 
-        //$user->first_name = $r->input('first_name');
+
+        $driver = Driver::where('driver_id', '=', $r->input('driver_id'))
+            ->update([
+                'bus_id' => $b->bus_id
+            ]);
+
+
+        return redirect('admin/buses')->with('success', 'new bus added');
     }
+
+
+
     public function add_bus_form()
     {
         $bus_route = BusRoute::query()
@@ -45,6 +60,7 @@ class BusController extends Controller
 
         $driver = Driver::query()
             ->select('driver_id', 'last_name', 'first_name')
+            ->where('bus_id', '=', null)
             ->get();
 
         return view('add_buses', compact('driver', 'bus_route'));

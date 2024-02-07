@@ -50,11 +50,16 @@ class DriverController extends Controller
     }
     public function show_drivers()
     {
+        $bus = Bus::query()
+            ->select('bus_id', 'plate_number')
+            ->where('driver_id', '=', null)
+            ->get();
+
         $driver = Driver::query()
             ->select('*')
             ->get();
 
-        return view('drivers', compact('driver'));
+        return view('drivers', compact('driver', 'bus'));
     }
     // -end Maynard
 }
