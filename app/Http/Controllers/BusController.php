@@ -14,6 +14,20 @@ use App\Models\Transaction;
 class BusController extends Controller
 {
     // Maynard 
+    public function add_bus(Request $r)
+    {
+        $bus = new Bus;
+        $bus->plate_number = $r->input('plate_number');
+        $bus->driver_id = $r->input('driver_id');
+        $bus->bus_route_id = $r->input('busroute_id');
+        $bus->service_status = $r->input('service_status');
+        $bus->bus_service_start = $r->input('bus_service_start');
+        $bus->save();
+
+        return redirect('admin/buses')->with('success', 'new bus added');
+
+        //$user->first_name = $r->input('first_name');
+    }
     public function add_bus_form()
     {
         $bus_route = BusRoute::query()

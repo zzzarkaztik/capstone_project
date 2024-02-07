@@ -4,12 +4,12 @@
 <head>
     @include('layouts/head')
     <title>Add Bus | ADMIN | TRIDENT BUSLINES</title>
+
 </head>
 
 <body>
     @include('layouts/navbar')
     @include('layouts/sidenav')
-    @include('layouts/messages')
 
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
 
@@ -52,13 +52,17 @@
                     <label class="form-label">Service Status</label>
                 </div>
 
+                <div class="form-outline border rounded">
+                    <input type="date" name="bus_service_date" class="form-control">
+                </div>
+                <label class="mb-5 form-label">Service Start Date</label>
+
                 <button type="submit" class="btn btn-primary btn-block mb-4">Save</button>
 
             </form>
         </div>
 
     </div>
-
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
