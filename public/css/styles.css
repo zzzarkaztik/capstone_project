@@ -89,6 +89,10 @@ footer {
     background-color: var(--primary);
 }
 
+.btn-warning {
+    color: white;
+}
+
 .card-title {
     background-color: var(--primary);
 }
