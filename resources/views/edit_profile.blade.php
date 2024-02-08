@@ -3,17 +3,17 @@
 
 <head>
     @include('layouts/head')
-    <title>Register | TRIDENT BUSLINES</title>
+    <title>Edit Profile | TRIDENT BUSLINES</title>
 </head>
 
-<body>
+<body class="mt-4 pt-5">
     @include('layouts/navbar')
     @include('layouts/messages')
     <div class="vh-100 d-flex justify-content-center align-items-center text-center">
 
         <div class="m-5 p-5 w-50">
             <img src="img/trident-logo.png" alt="trident logo" width="250px">
-            <form action="/register" method="POST">
+            <form action="/profile/edit" method="POST">
                 @csrf
                 <!-- First Name input -->
                 <div class="form-outline my-4" data-mdb-input-init>
@@ -53,20 +53,14 @@
                         <option value="student">Student</option>
                     </select>
                     <label class="form-label">Passenger Type</label>
-                </div>
-                {{-- terms and conditions --}}
-                <div class="form-check mb-4">
-                    <input type="checkbox" value="" id="terms_checkbox" />
-                    <label for="terms_checkbox">I accept the <a href="/terms_and_conditions">Terms and
-                            Conditions</a></label>
-                </div>
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
 
-                <!-- Login link -->
-                <div class="text-center">
-                    <p>Already a member? <a href="/login">Login</a></p>
-                </div>
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Confirm Changes</button>
+
+                    <!-- Login link -->
+                    <div class="text-center">
+                        <p>Already a member? <a href="/login">Login</a></p>
+                    </div>
             </form>
         </div>
 

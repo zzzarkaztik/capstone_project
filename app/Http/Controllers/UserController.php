@@ -13,10 +13,26 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function edit_profile()
+    public function edit_profile_form()
     {
-        return view('edit_profile');
+        $user = User::find(Session::get('user_id'));
+        return view('edit_profile', compact('user'));
     }
+
+    public function edit_profile(Request $request)
+    {
+        $user = User::find(Session::get('user_id'));
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->type = $request->input('type');
+        $user->save();
+
+        return redirect("/profile")->with('success', 'Profile Updated Successfully!');
+    }
+
+
+
     public function show_profile(Request $request)
     {
         $user = User::query()

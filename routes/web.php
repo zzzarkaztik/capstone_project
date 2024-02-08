@@ -76,5 +76,7 @@ Route::get('/register/admin', [UserController::class, 'show_register']);
 Route::post('/register/admin', [UserController::class, 'register_admin']);
 // Rafael
 Route::get('/profile', [UserController::class, 'show_profile']);
-Route::get('/edit_profile', [UserController::class, 'edit_profile']);
+Route::get('/profile/edit', [UserController::class, 'edit_profile_form']);
+Route::post('/profile/edit', [UserController::class, 'edit_profile']);
+
 // 
