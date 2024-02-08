@@ -39,6 +39,7 @@
                         <a data-bs-toggle="modal" data-bs-target="#delete_{{ $s->bus_schedule_id }}"
                             class="btn btn-danger">Delete</a>
                     </td>
+                    @include('layouts/delete_schedule')
                 </tr>
             @endforeach
         </table>
