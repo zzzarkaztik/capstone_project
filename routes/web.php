@@ -75,7 +75,7 @@ Route::put('/admin/drivers/{id}', [DriverController::class, 'edit_driver']);
 Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
 Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
 
-Route::resource('/admin/schedules', BusScheduleController::class)->only(['edit', 'update', 'show', 'destroy']);
+Route::resource('/admin/schedules', BusScheduleController::class);
 // Maynard end
 
 // Keith

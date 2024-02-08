@@ -12,8 +12,8 @@
 
 
     <div id="content">
-        <h1>Buses</h1>
-        <a href="/admin/buses/add" class="btn btn-success mb-2">+ ADD BUS</a>
+        <h1>SCHEDULES</h1>
+        <a href="/admin/schedules/create" class="btn btn-success mb-2">+ ADD SCHEDULE</a>
         <table class="table table-hover">
             <tr>
                 <th>Schedule ID</th>
@@ -30,17 +30,16 @@
                     <td>{{ $s->bus_schedule_id }}</td>
                     <td>{{ $s->bus_id }}</td>
                     <td>{{ $s->destination }}</td>
-                    <td>{{ $s->arrival_time }}</td>
-                    <td>{{ $s->departure_time }}</td>
+                    <td>{{ date('h:i A', strtotime($s->arrival_time)) }}</td>
+                    <td>{{ date('h:i A', strtotime($s->departure_time)) }}</td>
                     <td>{{ $s->status }}</td>
                     <td>{{ $s->available_seats }}</td>
                     <td>
-                        <a href="#" class="btn btn-primary">View</a>
-                        <a href="/admin/buses/edit/{{ $s->bus_id }}" class="btn btn-warning">Edit</a>
-                        <a data-bs-toggle="modal" data-bs-target="#delete_{{ $s->bus_id }}"
+                        <a href="/admin/schedule/{{ $s->bus_schedule_id }}" class="btn btn-warning">Edit</a>
+                        <a data-bs-toggle="modal" data-bs-target="#delete_{{ $s->bus_schedule_id }}"
                             class="btn btn-danger">Delete</a>
                     </td>
-                    @include('layouts/delete_bus')
+                    @include('layouts/delete_schedule')
                 </tr>
             @endforeach
         </table>
