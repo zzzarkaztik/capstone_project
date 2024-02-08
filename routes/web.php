@@ -86,7 +86,7 @@ Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
 Route::put('/admin/routes/{id}', [BusRouteController::class, 'edit_route']);
 Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
 
-Route::get('/admin/transactions', [TransactionController::class, 'show_transaction']);
+Route::resource('/admin/transactions', TransactionController::class,);
 // Keith end
 
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
