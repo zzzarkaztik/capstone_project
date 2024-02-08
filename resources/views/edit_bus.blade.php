@@ -72,7 +72,8 @@
                 </div>
 
                 <div class="form-outline border rounded">
-                    <input type="date" name="bus_service_start" class="form-control">
+                    <input type="date" name="bus_service_start" class="form-control"
+                        value="{{ $bus->bus_service_start }}">
                 </div>
                 <label class="mb-5 form-label">Service Start Date</label>
 

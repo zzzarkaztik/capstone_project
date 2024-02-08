@@ -33,7 +33,6 @@ class Bus extends Model
 		'bus_id' => 'int',
 		'bus_route_id' => 'int',
 		'driver_id' => 'int',
-		'bus_service_start' => 'datetime'
 	];
 
 	protected $fillable = [
