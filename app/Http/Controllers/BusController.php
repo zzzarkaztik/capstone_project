@@ -21,7 +21,7 @@ class BusController extends Controller
                 [
                     'plate_number' => $r->input('plate_number'),
                     'bus_route_id' => $r->input('bus_route_id'),
-                    'bus_driver_id' => $r->input('bus_driver_id'),
+                    'driver_id' => $r->input('bus_driver_id'),
                 ]
             );
 
@@ -31,13 +31,15 @@ class BusController extends Controller
     public function edit_bus_form(string $id)
     {
         $bus = Bus::query()
-            ->select('*')
-            ->where('bus_id', '=', $id)
+            ->select('buses.*', 'br.destination', 'd.first_name', 'd.last_name')
+            ->join('bus_routes as br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->join('drivers as d', 'd.driver_id', '=', 'buses.driver_id')
+            ->where('buses.bus_id', '=', $id)
             ->get()
             ->first();
 
         $route = BusRoute::all();
-        $driver = Driver::all();
+        $driver = Driver::where('bus_id', '=', null);
 
         return view('edit_bus', compact('bus', 'route', 'driver'));
     }

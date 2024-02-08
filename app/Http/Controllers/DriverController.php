@@ -31,7 +31,7 @@ class DriverController extends Controller
     public function edit_driver_form(string $id)
     {
         $driver = Driver::query()
-            ->select('drivers.*')
+            ->select('drivers.*', 'b.plate_number')
             ->leftJoin('buses AS b', 'b.driver_id', '=', 'drivers.driver_id')
             ->where('drivers.driver_id', '=', $id)
             ->first();

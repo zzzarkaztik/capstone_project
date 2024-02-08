@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts/head')
-    <title>Edit Route | ADMIN | TRIDENT BUSLINES</title>
+    <title>Edit Bus | ADMIN | TRIDENT BUSLINES</title>
 
 </head>
 
@@ -15,8 +15,8 @@
 
         <div class="m-5 p-5 w-50">
 
-            <h1>EDIT ROUTE</h1>
-            <form action="/admin/buses/{{$bus -> bus_id}}" method="POST">
+            <h1>EDIT BUS ID: {{ $bus->bus_id }}</h1>
+            <form action="/admin/buses/{{ $bus->bus_id }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="form-outline my-4">
@@ -26,20 +26,31 @@
 
                 <div class="form-outline mb-4">
                     <select class="form-select" name="bus_route_id">
-                        <option value="{{$bus -> bus_route_id}}">{{$bus -> bus_route_id}} ({{$bus -> destination}})</option>
-                        @foreach
-                        <option value="{{$route -> bus_route_id}}">{{$route -> bus_route_id}} ({{$route -> destination}})</option>
+                        <option value="{{ $bus->bus_route_id }}">{{ $bus->bus_route_id }}
+                            ({{ $bus->destination }})</option>
+                        @foreach ($route as $r)
+                            <option value="{{ $r->bus_route_id }}">{{ $r->bus_route_id }}
+                                ({{ $r->destination }})
+                            </option>
                         @endforeach
                     </select>
+                    <label class="form-label">Destination</label>
+
                 </div>
 
                 <div class="form-outline mb-4">
                     <select class="form-select" name="driver_id">
-                        <option value="{{$bus -> driver_id}}">{{$bus -> last_name}} ({{$bus -> first_name}})</option>
-                        @foreach
-                        <option value="{{$driver -> driver_id}}">{{$driver -> last_name}} ({{$driver -> first_name}})</option>
+                        <option value="{{ $bus->driver_id }}">({{ $bus->driver_id }}) {{ $bus->last_name }},
+                            {{ $bus->first_name }}
+                        </option>
+                        @foreach ($driver as $d)
+                            <option value="{{ $d->driver_id }}">({{ $d->driver_id }}){{ $d->last_name }}
+                                , {{ $d->first_name }}
+                            </option>
                         @endforeach
                     </select>
+                    <label class="form-label">Driver</label>
+
                 </div>
                 <br>
 
