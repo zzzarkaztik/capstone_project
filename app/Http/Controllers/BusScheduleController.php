@@ -49,14 +49,13 @@ class BusScheduleController extends Controller
         $s->status = $r->input("status");
         $s->save();
 
-        return redirect('/admin/schedules');
+        return redirect('/admin/schedules')->with('success', 'New schedule added.');
     }
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -80,6 +79,8 @@ class BusScheduleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        BusSchedule::where('bus_schedule_id', '=', $id)
+            ->delete();
+        return redirect('/admin/schedules')->with('success', 'Schedule removed successfully.');
     }
 }
