@@ -19,6 +19,12 @@ class BusController extends Controller
         Bus::where('bus_id', '=', $id)
             ->delete();
 
+        Driver::where('bus_id', '=', $id)
+            ->update([
+                'bus_id' => null
+            ]);
+
+
         return redirect('/admin/buses')
             ->with('success', 'Successfully deleted bus.');
     }
@@ -47,7 +53,7 @@ class BusController extends Controller
             ]);
 
 
-        return redirect('admin/buses')->with('success', 'new bus added');
+        return redirect('/admin/buses')->with('success', 'new bus added');
     }
 
 

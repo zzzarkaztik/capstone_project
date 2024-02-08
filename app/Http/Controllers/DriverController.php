@@ -11,8 +11,13 @@ class DriverController extends Controller
     // Maynard
     public function delete_driver(string $id)
     {
-        $driver = Driver::where('driver_id', '=', $id)
+        Driver::where('driver_id', '=', $id)
             ->delete();
+
+        Bus::where('driver_id', '=', $id)
+            ->update([
+                'driver_id' => null
+            ]);
 
         return redirect('/admin/drivers')
             ->with('success', 'Successfully deleted driver.');
