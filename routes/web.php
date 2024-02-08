@@ -7,6 +7,7 @@ use App\Http\Controllers\BusController;
 use App\Http\Controllers\BusRouteController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\BusScheduleController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +85,8 @@ Route::get('/admin/routes', [BusRouteController::class, 'show_route']);
 Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
 Route::put('/admin/routes/{id}', [BusRouteController::class, 'edit_route']);
 Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
+
+Route::get('/admin/transactions', [TransactionController::class, 'show_transaction']);
 // Keith end
 
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
