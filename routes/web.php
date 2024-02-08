@@ -6,6 +6,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\BusController;
 use App\Http\Controllers\BusRouteController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\BusScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,8 @@ Route::get('/admin/drivers/edit/{id}', [DriverController::class, 'edit_driver_fo
 Route::put('/admin/drivers/{id}', [DriverController::class, 'edit_driver']);
 Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
 Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
+
+Route::resource('/admin/schedules', BusScheduleController::class)->only(['edit', 'update', 'show', 'destroy']);
 // Maynard end
 
 // Keith
