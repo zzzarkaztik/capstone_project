@@ -12,9 +12,9 @@
             </div>
             <!-- Left links -->
             <div class="d-flex me-auto ms-2 mb-lg-0">
-                <a class="nav-link me-2" href="/admin/dashboard"><i class="ri-notification-3-fill"></i>
-                    NOTIFICATIONS</a>
-                <a class="nav-link " href="/admin/book"><i class="ri-coupon-3-fill"></i> BOOK A TICKET</a>
+                <a class="nav-link me-2" href="/admin/dashboard"><i class="ri-dashboard-fill"></i>
+                    DASHBOARD</a>
+                <a class="nav-link " href="/admin/book"><i class="ri-coupon-3-fill"></i> TRANSACTIONS</a>
             </div>
             <!-- Left links -->
 
