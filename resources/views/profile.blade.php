@@ -13,7 +13,11 @@
         <h1>My Profile</h1>
         <p>Name: {{$user -> first_name}} {{$user -> last_name}}</p>
         <p>Email: {{$user -> email}}</p>
+        @if (Session::get('role') == 'user')
         <p>Passenger Type: {{$user -> type}}</p>
+        @else
+        <p>Account Type: Admin</p>
+        @endif
         <a href="/profile/edit" class="btn btn-primary">Edit Profile</a>
     </div>
     @include('layouts/footer')
