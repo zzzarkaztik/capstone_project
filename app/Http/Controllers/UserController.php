@@ -41,6 +41,15 @@ class UserController extends Controller
             ->get()
             ->first();
 
+        if ($user->type == 'pwd') {
+            $user->type = 'PWD';
+        } elseif ($user->type == 'regular') {
+            $user->type = 'Regular';
+        } elseif ($user->type == 'senior_citizen') {
+            $user->type = 'Senior Citizen';
+        } elseif ($user->type == 'student') {
+            $user->type = 'Student';
+        }
         return view('profile', compact('user'));
     }
 
