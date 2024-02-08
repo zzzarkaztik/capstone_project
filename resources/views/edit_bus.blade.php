@@ -47,6 +47,7 @@
                                 No driver available
                             @endif
                         </option>
+                        <option value="">No Assigned Driver</option>
                         @foreach ($driver as $d)
                             <option value="{{ $d->driver_id }}">({{ $d->driver_id }}){{ $d->last_name }}
                                 , {{ $d->first_name }}

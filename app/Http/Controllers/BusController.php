@@ -23,7 +23,7 @@ class BusController extends Controller
                     'bus_route_id' => $r->input('bus_route_id'),
                     'driver_id' => $r->input('driver_id'),
                     'service_status' => $r->input('service_status'),
-                    'service_start_date' => $r->input('service_start_date'),
+                    'bus_service_start' => $r->input('bus_service_start'),
                 ]
             );
 
