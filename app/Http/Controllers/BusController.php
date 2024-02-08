@@ -111,7 +111,8 @@ class BusController extends Controller
                 'buses.bus_id', // Selecting bus_id from buses table
                 'buses.plate_number', // Selecting plate_number from buses table
                 'br.destination', // Selecting destination from bus_routes table alias br
-                DB::raw('CONCAT(d.last_name, " ", d.first_name) AS full_name') // Concatenating last_name and first_name from drivers table alias d
+                'buses.service_status',
+                DB::raw('CONCAT(d.last_name, ", ", d.first_name) AS full_name') // Concatenating last_name and first_name from drivers table alias d
             )
             ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
             ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')

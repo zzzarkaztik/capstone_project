@@ -38,7 +38,7 @@
                             </option>
                         @endforeach
                     </select>
-                    <label class="form-label">Assigned Bus</label>
+                    <label class="form-label">Assigned Bus ID (Plate Number)</label>
                 </div>
 
                 <div class="form-outline mb-4">

@@ -68,6 +68,8 @@ Route::delete('/admin/buses/{id}', [BusController::class, 'delete_bus']);
 Route::get('/admin/drivers', [DriverController::class, 'show_drivers']);
 Route::get('/admin/drivers/add', [DriverController::class, 'add_driver_form']);
 Route::post('/admin/drivers/add', [DriverController::class, 'add_driver']);
+Route::get('/admin/drivers/edit/{id}', [DriverController::class, 'edit_driver_form']);
+Route::put('/admin/drivers/{id}', [DriverController::class, 'edit_driver']);
 Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
 Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
 // Maynard end
