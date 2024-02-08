@@ -47,8 +47,22 @@ Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
 
 // Maynard 
 Route::get('/admin/buses/add', [BusController::class, 'add_bus_form']);
+// Maynard end
+
+//Keith
+Route::get('/admin/buses/edit/{id}', [BusController::class, 'edit_bus_form']);
+//Keith end
+
+//Maynard
 Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
 Route::get('/admin/buses', [BusController::class, 'show_buses']);
+//Maynard end
+
+//Keith
+Route::put('/admin/buses/{id}', [BusController::class, 'edit_bus']);
+//Keith end
+
+//Maynard
 Route::delete('/admin/buses/{id}', [BusController::class, 'delete_bus']);
 
 Route::get('/admin/drivers', [DriverController::class, 'show_drivers']);
@@ -56,9 +70,6 @@ Route::get('/admin/drivers/add', [DriverController::class, 'add_driver_form']);
 Route::post('/admin/drivers/add', [DriverController::class, 'add_driver']);
 Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
 Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
-
-
-
 // Maynard end
 
 // Keith
@@ -68,7 +79,7 @@ Route::get('/admin/routes', [BusRouteController::class, 'show_route']);
 Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
 Route::put('/admin/routes/{id}', [BusRouteController::class, 'edit_route']);
 Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
-// Keith
+// Keith end
 
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
 

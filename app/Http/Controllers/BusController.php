@@ -13,6 +13,37 @@ use App\Models\Transaction;
 
 class BusController extends Controller
 {
+    // Keith
+    public function edit_bus(Request $r, string $id)
+    {
+        $bus = Bus::where('bus_id', '=', $id)
+            ->update(
+                [
+                    'plate_number' => $r->input('plate_number'),
+                    'bus_route_id' => $r->input('bus_route_id'),
+                    'bus_driver_id' => $r->input('bus_driver_id'),
+                ]
+            );
+
+        return redirect('/admin/buses')->with('success', 'Successfully edited bus!');
+    }
+
+    public function edit_bus_form(string $id)
+    {
+        $bus = Bus::query()
+            ->select('*')
+            ->where('bus_id', '=', $id)
+            ->get()
+            ->first();
+
+        $route = BusRoute::all();
+        $driver = Driver::all();
+
+        return view('edit_bus', compact('bus', 'route', 'driver'));
+    }
+
+    // Keith end
+
     // Maynard 
     public function delete_bus(string $id)
     {

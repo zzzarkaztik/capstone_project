@@ -23,19 +23,18 @@
                 <th>Action</th>
             </tr>
             @foreach ($bus as $b)
-                <tr>
-                    <td>{{ $b->bus_id }}</td>
-                    <td>{{ $b->plate_number }}</td>
-                    <td>{{ $b->destination }}</td>
-                    <td>{{ $b->full_name }}</td>
-                    <td>
-                        <a href="#" class="btn btn-primary">View</a>
-                        <a href="#" class="btn btn-warning">Edit</a>
-                        <a data-bs-toggle="modal" data-bs-target="#delete_{{ $b->bus_id }}"
-                            class="btn btn-danger">Delete</a>
-                    </td>
-                    @include('layouts/delete_bus')
-                </tr>
+            <tr>
+                <td>{{ $b->bus_id }}</td>
+                <td>{{ $b->plate_number }}</td>
+                <td>{{ $b->destination }}</td>
+                <td>{{ $b->full_name }}</td>
+                <td>
+                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="/admin/buses/edit/{{$b -> bus_id}}" class="btn btn-warning">Edit</a>
+                    <a data-bs-toggle="modal" data-bs-target="#delete_{{ $b->bus_id }}" class="btn btn-danger">Delete</a>
+                </td>
+                @include('layouts/delete_bus')
+            </tr>
             @endforeach
         </table>
     </div>
