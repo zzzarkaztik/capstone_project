@@ -21,7 +21,9 @@ class BusController extends Controller
                 [
                     'plate_number' => $r->input('plate_number'),
                     'bus_route_id' => $r->input('bus_route_id'),
-                    'driver_id' => $r->input('bus_driver_id'),
+                    'driver_id' => $r->input('driver_id'),
+                    'service_status' => $r->input('service_status'),
+                    'service_start_date' => $r->input('service_start_date'),
                 ]
             );
 
@@ -32,10 +34,9 @@ class BusController extends Controller
     {
         $bus = Bus::query()
             ->select('buses.*', 'br.destination', 'd.first_name', 'd.last_name')
-            ->join('bus_routes as br', 'br.bus_route_id', '=', 'buses.bus_route_id')
-            ->join('drivers as d', 'd.driver_id', '=', 'buses.driver_id')
+            ->leftJoin('bus_routes as br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->leftJoin('drivers as d', 'd.driver_id', '=', 'buses.driver_id')
             ->where('buses.bus_id', '=', $id)
-            ->get()
             ->first();
 
         $route = BusRoute::all();

@@ -32,6 +32,7 @@
 
                 <div class="form-outline mb-4">
                     <select class="form-select" name="bus_id">
+                        <option value="">No Assigned Bus</option>
                         <option value="{{ $driver->bus_id }}">{{ $driver->bus_id }} ({{ $driver->plate_number }})
                         </option>
                         @foreach ($bus as $b)

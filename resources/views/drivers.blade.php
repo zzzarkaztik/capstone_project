@@ -16,16 +16,16 @@
         <a href="/admin/drivers/add" class="btn btn-success mb-2">+ ADD DRIVER</a>
         <table class="table table-hover">
             <tr>
-                <th>#</th>
+                <th>Driver ID</th>
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Birthdate</th>
                 <th>Assigned Bus ID</th>
                 <th>Actions</th>
             </tr>
-            @foreach ($driver as $key => $d)
+            @foreach ($driver as $d)
                 <tr>
-                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $d->driver_id }}</td>
                     <td>{{ $d->last_name }}, {{ $d->first_name }}</td>
                     <td>{{ $d->gender }}</td>
                     <td>{{ $d->birthdate }}</td>

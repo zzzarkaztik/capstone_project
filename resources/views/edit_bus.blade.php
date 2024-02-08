@@ -40,8 +40,12 @@
 
                 <div class="form-outline mb-4">
                     <select class="form-select" name="driver_id">
-                        <option value="{{ $bus->driver_id }}">({{ $bus->driver_id }}) {{ $bus->last_name }},
-                            {{ $bus->first_name }}
+                        <option value="{{ $bus->driver_id }}">
+                            @if ($bus->driver_id)
+                                ({{ $bus->driver_id }}) {{ $bus->last_name }}, {{ $bus->first_name }}
+                            @else
+                                No driver available
+                            @endif
                         </option>
                         @foreach ($driver as $d)
                             <option value="{{ $d->driver_id }}">({{ $d->driver_id }}){{ $d->last_name }}
@@ -50,8 +54,28 @@
                         @endforeach
                     </select>
                     <label class="form-label">Driver</label>
-
                 </div>
+
+
+                <div class="form-outline mb-4">
+                    <select class="form-select" name="service_status">
+                        <option value="{{ $bus->service_status }}" selected>
+                            {{ $bus->service_status == 'not_in_service' ? 'Not in Service' : 'In Service' }}
+
+                        </option>
+                        <option disabled>--------------------</option>
+                        <option value="in_service">In Service</option>
+                        <option value="not_in_service">Not In Service</option>
+                    </select>
+                    <label class="form-label">Service Status</label>
+                </div>
+
+                <div class="form-outline border rounded">
+                    <input type="date" name="bus_service_start" class="form-control">
+                </div>
+                <label class="mb-5 form-label">Service Start Date</label>
+
+
                 <br>
 
                 <button type="submit" class="btn btn-primary btn-block w-100">Save</button>
