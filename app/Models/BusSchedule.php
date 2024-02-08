@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $arrival_time
  * @property Carbon $departure_time
  * @property string $status
- * @property Carbon $date_created
+ * @property Carbon $date_posted
  *
  * @package App\Models
  */
@@ -29,9 +29,6 @@ class BusSchedule extends Model
 
 	protected $casts = [
 		'bus_id' => 'int',
-		'arrival_time' => 'datetime',
-		'departure_time' => 'datetime',
-		'date_created' => 'datetime'
 	];
 
 	protected $fillable = [
@@ -39,6 +36,6 @@ class BusSchedule extends Model
 		'arrival_time',
 		'departure_time',
 		'status',
-		'date_created'
+		'date_posted'
 	];
 }

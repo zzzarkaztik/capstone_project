@@ -16,28 +16,43 @@
 
         <div class="m-5 p-5 w-50">
 
-            <h1>ADD NEW ROUTE</h1>
-            <form action="/admin/routes" method="POST">
+            <h1>ADD NEW SCHEDULE</h1>
+            <form action="/admin/schedules" method="POST">
                 @csrf
 
                 <div class="form-outline my-4">
-                    <input type="text" class="form-control" name="origin" />
+                    <input type="text" class="form-control" name="origin" value="PITX" disabled />
                     <label class="form-label">Origin</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="text" class="form-control" name="destination" />
-                    <label class="form-label">Destination</label>
+                    <select class="form-select" name="bus_id">
+                        @foreach ($bus as $b)
+                            <option value="{{ $b->bus_id }}">{{ $b->destination }} - BUS ID#{{ $b->bus_id }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <label class="form-label">Destination - Bus ID</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="text" class="form-control" name="kilometers" />
-                    <label class="form-label">Kilometers</label>
+                    <input type="time" class="form-control" name="arrival_time" />
+                    <label class="form-label">Arrival Time</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="text" class="form-control" name="price" />
-                    <label class="form-label">Price</label>
+                    <input type="time" class="form-control" name="departure_time" />
+                    <label class="form-label">Departure Time</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <select class="form-select" name="status">
+                        <option value="pending">PENDING</option>
+                        <option value="arriving">ARRIVING</option>
+                        <option value="boarding">BOARDING</option>
+                        <option value="in_transit">IN TRANSIT</option>
+                    </select>
+                    <label class="form-label">Status</label>
                 </div>
                 <br>
 
