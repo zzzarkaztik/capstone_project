@@ -32,10 +32,10 @@
                     <td>{{ $s->destination }}</td>
                     <td>{{ date('h:i A', strtotime($s->arrival_time)) }}</td>
                     <td>{{ date('h:i A', strtotime($s->departure_time)) }}</td>
-                    <td>{{ $s->status }}</td>
+                    <td>{{ strtoupper(str_replace('_', ' ', $s->status)) }}</td>
                     <td>{{ $s->available_seats }}</td>
                     <td>
-                        <a href="/admin/schedule/{{ $s->bus_schedule_id }}" class="btn btn-warning">Edit</a>
+                        <a href="/admin/schedules/{{ $s->bus_schedule_id }}/edit" class="btn btn-warning">Edit</a>
                         <a data-bs-toggle="modal" data-bs-target="#delete_{{ $s->bus_schedule_id }}"
                             class="btn btn-danger">Delete</a>
                     </td>

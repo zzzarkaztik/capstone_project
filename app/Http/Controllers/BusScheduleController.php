@@ -63,15 +63,38 @@ class BusScheduleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $sched = BusSchedule::query()
+            ->select('bus_schedules.*', 'br.destination')
+            ->join('buses as b', 'b.bus_id', '=', 'bus_schedules.bus_id')
+            ->join('bus_routes as br', 'br.bus_route_id', '=', 'b.bus_route_id')
+            ->where('bus_schedule_id', '=', $id)
+            ->get()
+            ->first();
+
+        $bus = Bus::query()
+            ->select('bus_id', 'destination')
+            ->join('bus_routes as br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->get();
+
+        return view('edit_schedule', compact('sched', 'bus'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $r, string $id)
     {
-        //
+        $sched = BusSchedule::where('bus_schedule_id', '=', $id)
+            ->update(
+                [
+                    'bus_id' => $r->input('bus_id'),
+                    'arrival_time' => $r->input('arrival_time'),
+                    'departure_time' => $r->input('departure_time'),
+                    'status' => $r->input('status'),
+                ]
+            );
+
+        return redirect('/admin/schedules')->with('success', 'Successfully edited schedule!');
     }
 
     /**

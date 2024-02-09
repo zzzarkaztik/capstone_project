@@ -157,3 +157,7 @@ footer {
     background-color: var(--white);
     padding: 15px;
 }
+
+td > .form-select {
+    width: 130px;
+}
