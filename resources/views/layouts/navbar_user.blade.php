@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <div class="fixed-top">
-    <nav class="navbar navbar-expand-lg bg-body-danger fixed-top">
+    <nav class="navbar navbar-expand-lg bg-body-danger">
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Toggle button -->
