@@ -44,10 +44,9 @@
                             @if ($bus->driver_id)
                                 ({{ $bus->driver_id }}) {{ $bus->last_name }}, {{ $bus->first_name }}
                             @else
-                                No driver available
+                                No Assigned Driver
                             @endif
                         </option>
-                        <option value="">No Assigned Driver</option>
                         @foreach ($driver as $d)
                             <option value="{{ $d->driver_id }}">({{ $d->driver_id }}){{ $d->last_name }}
                                 , {{ $d->first_name }}

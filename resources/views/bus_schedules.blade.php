@@ -12,7 +12,7 @@
 
 
     <div id="content">
-        <h1>SCHEDULES</h1>
+        <h1>Schedules</h1>
         <a href="/admin/schedules/create" class="btn btn-success mb-2">+ ADD SCHEDULE</a>
         <table class="table table-hover">
             <tr>

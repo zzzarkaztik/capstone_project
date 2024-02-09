@@ -145,7 +145,7 @@ footer {
 #content {
     margin-left: 200px;
     padding: 16px;
-    background-color: lightgrey;
+    background-color: #f0f0f0;
     height: 100vh; /* Set height to 100 viewport height */
 }
 

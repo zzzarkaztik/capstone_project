@@ -21,7 +21,9 @@
                 @csrf
 
                 <div class="form-outline my-4">
-                    <input type="text" class="form-control" name="origin" />
+                    <select class="form-control" name="origin">
+                        <option value="PITX" selected>PITX</option>
+                    </select>
                     <label class="form-label">Origin</label>
                 </div>
 
@@ -31,15 +33,38 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="text" class="form-control" name="kilometers" />
+                    <input type="number" class="form-control" name="kilometers" id="kilometers"
+                        oninput="calculatePrice()" />
                     <label class="form-label">Kilometers</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="text" class="form-control" name="price" />
+                    <input type="float" class="form-control" name="price" id="price" />
                     <label class="form-label">Price</label>
                 </div>
                 <br>
+
+                <script>
+                    function calculatePrice() {
+                        // Get the value of kilometers input
+                        var kilometers = document.getElementById("kilometers").value;
+
+                        // Define the rates
+                        var firstFiveRate = 15.00;
+                        var additionalRate = 2.65;
+
+                        // Calculate the price
+                        var price;
+                        if (kilometers <= 5) {
+                            price = firstFiveRate;
+                        } else {
+                            price = firstFiveRate + (kilometers - 5) * additionalRate;
+                        }
+
+                        // Update the price input field with the calculated price
+                        document.getElementById("price").value = price.toFixed(2); // To display price with 2 decimal places
+                    }
+                </script>
 
                 <button type="submit" class="btn btn-primary btn-block w-100">Save</button>
 

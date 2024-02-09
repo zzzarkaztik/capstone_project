@@ -32,6 +32,7 @@ class BusScheduleController extends Controller
         $bus = Bus::query()
             ->select('buses.bus_id', 'br.destination')
             ->join('bus_routes as br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->where('service_status', '=', 'in_service')
             ->get();
 
         return view('add_schedule', compact('bus'));
@@ -74,6 +75,7 @@ class BusScheduleController extends Controller
         $bus = Bus::query()
             ->select('bus_id', 'destination')
             ->join('bus_routes as br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->where('service_status', '=', 'in_service')
             ->get();
 
         return view('edit_schedule', compact('sched', 'bus'));
