@@ -14,7 +14,6 @@
     <div id=content>
 
         <div class="vh-100 d-flex justify-content-center text-center">
-            @include('layouts/messages')
 
             <div class="m-5 p-5 w-50">
 
