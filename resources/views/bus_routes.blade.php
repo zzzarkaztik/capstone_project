@@ -18,7 +18,7 @@
                 <th>#</th>
                 <th>Origin</th>
                 <th>Destination</th>
-                <th>Kilometeres</th>
+                <th>Distance (km)</th>
                 <th>Price</th>
                 <th>Action</th>
             </tr>

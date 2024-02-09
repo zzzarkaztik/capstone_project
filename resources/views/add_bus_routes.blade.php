@@ -36,7 +36,7 @@
                     <div class="form-outline mb-4">
                         <input type="number" class="form-control" name="kilometers" id="kilometers"
                             oninput="calculatePrice()" />
-                        <label class="form-label">Kilometers</label>
+                        <label class="form-label">Distance (km)</label>
                     </div>
 
                     <div class="form-outline mb-4">
