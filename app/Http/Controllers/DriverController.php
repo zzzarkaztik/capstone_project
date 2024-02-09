@@ -41,7 +41,6 @@ class DriverController extends Controller
             ->where('driver_id', '=', null)
             ->get();
 
-        return $driver;
 
         return view('edit_driver', compact('driver', 'bus'));
     }

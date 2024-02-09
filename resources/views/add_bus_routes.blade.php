@@ -11,66 +11,68 @@
     @include('layouts/navbar')
     @include('layouts/sidenav')
 
-    <div class="vh-100 d-flex justify-content-center text-center">
-        @include('layouts/messages')
+    <div id=content>
+        <div class="vh-100 d-flex justify-content-center text-center">
+            @include('layouts/messages')
 
-        <div class="m-5 p-5 w-50">
+            <div class="m-5 p-5 w-50">
 
-            <h1>ADD NEW ROUTE</h1>
-            <form action="/admin/routes" method="POST">
-                @csrf
+                <h1>ADD NEW ROUTE</h1>
+                <form action="/admin/routes" method="POST">
+                    @csrf
 
-                <div class="form-outline my-4">
-                    <select class="form-control" name="origin">
-                        <option value="PITX" selected>PITX</option>
-                    </select>
-                    <label class="form-label">Origin</label>
-                </div>
+                    <div class="form-outline my-4">
+                        <select class="form-control" name="origin">
+                            <option value="PITX" selected>PITX</option>
+                        </select>
+                        <label class="form-label">Origin</label>
+                    </div>
 
-                <div class="form-outline mb-4">
-                    <input type="text" class="form-control" name="destination" />
-                    <label class="form-label">Destination</label>
-                </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" class="form-control" name="destination" />
+                        <label class="form-label">Destination</label>
+                    </div>
 
-                <div class="form-outline mb-4">
-                    <input type="number" class="form-control" name="kilometers" id="kilometers"
-                        oninput="calculatePrice()" />
-                    <label class="form-label">Kilometers</label>
-                </div>
+                    <div class="form-outline mb-4">
+                        <input type="number" class="form-control" name="kilometers" id="kilometers"
+                            oninput="calculatePrice()" />
+                        <label class="form-label">Kilometers</label>
+                    </div>
 
-                <div class="form-outline mb-4">
-                    <input type="float" class="form-control" name="price" id="price" />
-                    <label class="form-label">Price</label>
-                </div>
-                <br>
+                    <div class="form-outline mb-4">
+                        <input type="float" class="form-control" name="price" id="price" />
+                        <label class="form-label">Price</label>
+                    </div>
+                    <br>
 
-                <script>
-                    function calculatePrice() {
-                        // Get the value of kilometers input
-                        var kilometers = document.getElementById("kilometers").value;
+                    <script>
+                        function calculatePrice() {
+                            // Get the value of kilometers input
+                            var kilometers = document.getElementById("kilometers").value;
 
-                        // Define the rates
-                        var firstFiveRate = 15.00;
-                        var additionalRate = 2.65;
+                            // Define the rates
+                            var firstFiveRate = 15.00;
+                            var additionalRate = 2.65;
 
-                        // Calculate the price
-                        var price;
-                        if (kilometers <= 5) {
-                            price = firstFiveRate;
-                        } else {
-                            price = firstFiveRate + (kilometers - 5) * additionalRate;
+                            // Calculate the price
+                            var price;
+                            if (kilometers <= 5) {
+                                price = firstFiveRate;
+                            } else {
+                                price = firstFiveRate + (kilometers - 5) * additionalRate;
+                            }
+
+                            // Update the price input field with the calculated price
+                            document.getElementById("price").value = price.toFixed(2); // To display price with 2 decimal places
                         }
+                    </script>
 
-                        // Update the price input field with the calculated price
-                        document.getElementById("price").value = price.toFixed(2); // To display price with 2 decimal places
-                    }
-                </script>
+                    <button type="submit" class="btn btn-primary btn-block w-100">Save</button>
 
-                <button type="submit" class="btn btn-primary btn-block w-100">Save</button>
+                </form>
+            </div>
 
-            </form>
         </div>
-
     </div>
 
 

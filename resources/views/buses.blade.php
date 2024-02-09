@@ -14,7 +14,7 @@
     <div id="content">
         <h1>Buses</h1>
         <a href="/admin/buses/add" class="btn btn-success mb-2">+ ADD BUS</a>
-        <table class="table table-hover">
+        <table class="table table-hover align-middle">
             <tr>
                 <th>Bus ID</th>
                 <th>Plate Number</th>

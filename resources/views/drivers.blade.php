@@ -14,7 +14,7 @@
     <div id="content">
         <h1>Drivers</h1>
         <a href="/admin/drivers/add" class="btn btn-success mb-2">+ ADD DRIVER</a>
-        <table class="table table-hover">
+        <table class="table table-hover align-middle">
             <tr>
                 <th>Driver ID</th>
                 <th>Name</th>

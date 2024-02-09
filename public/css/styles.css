@@ -149,6 +149,37 @@ footer {
     height: 100vh; /* Set height to 100 viewport height */
 }
 
+.tbg {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+
+.tbg-dark {
+    color: white;
+    background-color: #c0c0c0;
+}
+
+.tbg-yellow {
+    color: white;
+    background-color: #ffc107;
+}
+.tbg-green {
+    color: white;
+    background-color: #28a745;
+}
+.tbg-red {
+    color: white;
+    background-color: #dc3545;
+}
 .nobs-card {
     border-radius: 8px;
     overflow: hidden;
