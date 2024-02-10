@@ -20,6 +20,7 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
+//PUBLIC
 Route::get('/', function () {
     return view('home');
 });
@@ -37,66 +38,73 @@ Route::get('/terms_and_conditions', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/book', function () {
-    return view('user_booking');
-});
-
 Route::get('/passenger_info', function () {
     return view('passenger_info');
 });
-Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
+//
+
+//USER
+Route::middleware(['checkSessionUser'])->group(function () {
+    // Rafael
+    Route::get('/profile', [UserController::class, 'show_profile']);
+    Route::get('/profile/edit', [UserController::class, 'edit_profile_form']);
+    Route::post('/profile/edit', [UserController::class, 'edit_profile']);
+    // 
+
+    //Keith
+    Route::get('/book', [TransactionController::class, 'index']);
+    Route::post('/book', [TransactionController::class, 'book_ticket']);
+    //
+});
+
+//ADMIN
+Route::middleware(['checkSessionAdmin'])->group(function () {
+    Route::get('/admin/dashboard', [BusController::class, 'total_dashboard']);
 
 
-// Maynard 
-Route::get('/admin/buses/add', [BusController::class, 'add_bus_form']);
-// Maynard end
+    // Maynard 
+    Route::get('/admin/buses/add', [BusController::class, 'add_bus_form']);
+    // Maynard end
 
-//Keith
-Route::get('/admin/buses/edit/{id}', [BusController::class, 'edit_bus_form']);
-//Keith end
+    //Keith
+    Route::get('/admin/buses/edit/{id}', [BusController::class, 'edit_bus_form']);
+    //Keith end
 
-//Maynard
-Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
-Route::get('/admin/buses', [BusController::class, 'show_buses']);
-Route::get('/admin/buses/{id}', [BusController::class, 'profile_bus']);
-//Maynard end
+    //Maynard
+    Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
+    Route::get('/admin/buses', [BusController::class, 'show_buses']);
+    Route::get('/admin/buses/{id}', [BusController::class, 'profile_bus']);
+    //Maynard end
 
-//Keith
-Route::put('/admin/buses/{id}', [BusController::class, 'edit_bus']);
-//Keith end
+    //Keith
+    Route::put('/admin/buses/{id}', [BusController::class, 'edit_bus']);
+    //Keith end
 
-//Maynard
-Route::delete('/admin/buses/{id}', [BusController::class, 'delete_bus']);
+    //Maynard
+    Route::delete('/admin/buses/{id}', [BusController::class, 'delete_bus']);
 
-Route::get('/admin/drivers', [DriverController::class, 'show_drivers']);
-Route::get('/admin/drivers/add', [DriverController::class, 'add_driver_form']);
-Route::post('/admin/drivers/add', [DriverController::class, 'add_driver']);
-Route::get('/admin/drivers/edit/{id}', [DriverController::class, 'edit_driver_form']);
-Route::put('/admin/drivers/{id}', [DriverController::class, 'edit_driver']);
-Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
-Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
+    Route::get('/admin/drivers', [DriverController::class, 'show_drivers']);
+    Route::get('/admin/drivers/add', [DriverController::class, 'add_driver_form']);
+    Route::post('/admin/drivers/add', [DriverController::class, 'add_driver']);
+    Route::get('/admin/drivers/edit/{id}', [DriverController::class, 'edit_driver_form']);
+    Route::put('/admin/drivers/{id}', [DriverController::class, 'edit_driver']);
+    Route::get('/admin/drivers/{id}', [DriverController::class, 'driver_profile']);
+    Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
 
-Route::resource('/admin/schedules', BusScheduleController::class);
-// Maynard end
+    Route::resource('/admin/schedules', BusScheduleController::class);
+    // Maynard end
 
-// Keith
-Route::get('/admin/routes/add', [BusRouteController::class, 'add_route_form']);
-Route::get('/admin/routes/edit/{id}', [BusRouteController::class, 'edit_route_form']);
-Route::get('/admin/routes', [BusRouteController::class, 'show_route']);
-Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
-Route::put('/admin/routes/{id}', [BusRouteController::class, 'edit_route']);
-Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
-
-Route::resource('/admin/transactions', TransactionController::class,);
-// Keith end
+    // Keith
+    Route::get('/admin/routes/add', [BusRouteController::class, 'add_route_form']);
+    Route::get('/admin/routes/edit/{id}', [BusRouteController::class, 'edit_route_form']);
+    Route::get('/admin/routes', [BusRouteController::class, 'show_route']);
+    Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
+    Route::put('/admin/routes/{id}', [BusRouteController::class, 'edit_route']);
+    Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
+    // Keith end
+});
 
 Route::get('/notifications', [TicketController::class, 'view_notifications']);
 
 Route::get('/register/admin', [UserController::class, 'show_register']);
 Route::post('/register/admin', [UserController::class, 'register_admin']);
-// Rafael
-Route::get('/profile', [UserController::class, 'show_profile']);
-Route::get('/profile/edit', [UserController::class, 'edit_profile_form']);
-Route::post('/profile/edit', [UserController::class, 'edit_profile']);
-
-// 

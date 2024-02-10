@@ -2,63 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BusSchedule;
+use App\Models\Transaction;
+use App\Models\Ticket;
+
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function book_ticket(Request $r)
+    {
+        $book = new Transaction;
+        $book->user_id = Session::get('user_id');
+        $book->save();
+
+        $sched = BusSchedule::query()
+            ->select('*')
+            ->where('available_seats', '>', '0')
+            ->get();
+
+        for ($i = 0; $i < count($sched); $i++) {
+            $num_book = $r->input('book_' . $sched[$i]->bus_schedule_id);
+        }
+    }
+
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $sched = BusSchedule::query()
+            ->select('*')
+            ->where('available_seats', '>', '0')
+            ->get();
+        return view('user_booking', compact('sched'));
     }
 }

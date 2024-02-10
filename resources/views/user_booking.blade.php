@@ -4,76 +4,50 @@
 <head>
     @include('layouts/head')
     <title>Book a Ticket | TRIDENT BUSLINES</title>
+    <script>
+        $(document).ready(function() {
+            $(".deduct_button").click(function() {
+                $schedule_id = $(this).prop('id').replace("deduct_", "");
+                $new_val = Number($("#book_" + $schedule_id).val()) - 1;
+                if ($new_val >= 0) {
+                    $("#book_" + $schedule_id).val($new_val);
+                }
+            });
+
+            $(".add_button").click(function() {
+                $schedule_id = $(this).prop('id').replace("add_", "");
+                $new_val = Number($("#book_" + $schedule_id).val()) + 1;
+                if ($new_val <= 99) {
+                    $("#book_" + $schedule_id).val($new_val);
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
     @include('layouts/navbar')
-    <form action="">
-
-        <div class="container mt-4 pt-5">
+    <h1>Available schedules:</h1>
+    <div class="container mt-4 pt-5">
+        <form action="/book" method="POST">
             <div class="row">
-                <div class="col-lg-8">
-                    <h2>Destination:</h2>
-
-                    <!-- Origin and Destination -->
-                    <div class="form-group">
-                        <label for="origin">Origin:</label>
-                        <select class="form-control" id="origin" name="origin">
-                            <option value="">blank</option>
-                        </select>
-
-                        <label for="destination" class="mt-2">Destination:</label>
-                        <select class="form-control" id="destination" name="destination">
-                            <option value="">blank</option>
-                        </select>
-                    </div>
-
-                    <!-- Travel Type -->
-                    <div class="form-group mt-3">
-                        <h3>Travel Type:</h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="travel-type" id="round_trip">
-                            <label class="form-check-label" for="round_trip">Round-trip</label>
+                @csrf
+                @foreach ($sched as $s)
+                <div class="col-lg-3">
+                    <div class="card mt-4 pt-5">
+                        <div class="card-body">
+                            <h5 class="card-title">{{$s -> bus_schedule_id}}</span></h5>
+                            <a class="btn btn-danger deduct_button" id="deduct_{{$s -> bus_schedule_id}}">-</a>
+                            <input type="number" style="width: 50px" min="0" max="99" value="0" id="book_{{$s -> bus_schedule_id}}" name="book_{{$s -> bus_schedule_id}}">
+                            <a class="btn btn-primary add_button" id="add_{{$s -> bus_schedule_id}}">+</a>
                         </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="travel-type" id="one_way">
-                            <label class="form-check-label" for="one_way">One-way</label>
-                        </div>
-                    </div>
-
-                    <!-- Departure and Return Date -->
-                    <div class="form-group mt-3">
-                        <h3>Select Departure Date:</h3>
-                        <div class="form-group">
-                            <label for="departDate">Depart:</label>
-                            <input type="date" class="form-control" id="departDate" name="departDate">
-                        </div>
-
-                        <h3 class="mt-3">Select Return Date:</h3>
-                        <div class="form-group">
-                            <label for="returnDate">Return:</label>
-                            <input type="date" class="form-control" id="returnDate" name="returnDate">
-                        </div>
-                    </div>
-
-                    <!-- Passengers -->
-                    <div class="form-group mt-3">
-                        <h3>Passengers:</h3>
-                        <div class="form-group">
-                            <label for="passengers">No. of Passengers:</label>
-                            <input type="number" class="form-control" id="passengers" name="passengers" min="1" max="10">
-                        </div>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="form-group mt-3">
-                        <input type="submit" class="btn btn-primary" value="Submit">
                     </div>
                 </div>
+                @endforeach
             </div>
-        </div>
-    </form>
+            <input type="submit" class="btn btn-success mt-3" value="Book Ticket" />
+        </form>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
