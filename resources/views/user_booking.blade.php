@@ -17,7 +17,7 @@
             $(".add_button").click(function() {
                 $schedule_id = $(this).prop('id').replace("add_", "");
                 $new_val = Number($("#book_" + $schedule_id).val()) + 1;
-                if ($new_val <= 99) {
+                if ($new_val <= 1) {
                     $("#book_" + $schedule_id).val($new_val);
                 }
             });
@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{$s -> bus_schedule_id}}</span></h5>
                             <a class="btn btn-danger deduct_button" id="deduct_{{$s -> bus_schedule_id}}">-</a>
-                            <input type="number" style="width: 50px" min="0" max="99" value="0" id="book_{{$s -> bus_schedule_id}}" name="book_{{$s -> bus_schedule_id}}">
+                            <input type="number" style="width: 50px" min="0" max="1" value="0" id="book_{{$s -> bus_schedule_id}}" name="book_{{$s -> bus_schedule_id}}">
                             <a class="btn btn-primary add_button" id="add_{{$s -> bus_schedule_id}}">+</a>
                         </div>
                     </div>

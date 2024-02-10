@@ -26,6 +26,7 @@ class TransactionController extends Controller
             ->get();
 
         $tickets = [];
+        $totalPrice = 0;
         for ($i = 0; $i < count($sched); $i++) {
             $num_book = $r->input('book_' . $sched[$i]->bus_schedule_id);
             if ($num_book > 0) {
@@ -36,9 +37,12 @@ class TransactionController extends Controller
                 $ticket->type = $user->type;;
                 $ticket->price = $sched[$i]->price;
                 $ticket->save();
+                $totalPrice += $ticket->price * $num_book;
                 array_push($tickets, $ticket);
             }
         }
+        $book->total_price = $totalPrice;
+        $book->save();
 
         return view('tickets', compact('book', 'tickets'));
     }
