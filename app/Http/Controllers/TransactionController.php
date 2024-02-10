@@ -44,7 +44,16 @@ class TransactionController extends Controller
         $book->total_price = $totalPrice;
         $book->save();
 
-        return view('tickets', compact('book', 'tickets'));
+        $receipt = Transaction::query()
+            ->select('ticket_id', 'buses.bus_id', 'destination', 'arrival_time', 'departure_time', 'transactions.total_price')
+            ->join('tickets', 'tickets.transaction_id', '=', 'transactions.transaction_id')
+            ->join('bus_schedules', 'bus_schedules.bus_schedule_id', '=', 'tickets.bus_schedule_id')
+            ->join('buses', 'buses.bus_id', '=', 'bus_schedules.bus_id')
+            ->join('bus_routes', 'bus_routes.bus_route_id', '=', 'buses.bus_route_id')
+            ->where('transactions.transaction_id', '=', $book->transaction_id)
+            ->get();
+
+        return view('tickets', compact('book', 'tickets', 'receipt'));
     }
 
     public function index()

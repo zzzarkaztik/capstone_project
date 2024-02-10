@@ -27,10 +27,10 @@
 
 <body>
     @include('layouts/navbar')
-    <h1>Available schedules:</h1>
     <div class="container mt-4 pt-5">
         <form action="/book" method="POST">
             <div class="row">
+                <h1>Available trips:</h1>
                 @csrf
                 @foreach ($sched as $s)
                 <div class="col-lg-3">
