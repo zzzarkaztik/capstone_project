@@ -25,7 +25,7 @@
                 <td>{{$r -> bus_id}}</td>
                 <td>{{$r -> destination}}</td>
                 <td>{{$r -> arrival_time}} - {{$r -> departure_time}}</td>
-                <td>{{$r -> total_price}}</td>
+                <td>₱{{$r -> total_price}}</td>
             </tr>
             @endforeach
         </table>
