@@ -13,6 +13,28 @@ use App\Models\Transaction;
 
 class BusController extends Controller
 {
+    // Maynard
+    public function profile_bus(string $id)
+    {
+        $bus = DB::table('buses')
+            ->select(
+
+                'buses.*', // Selecting plate_number from buses table
+                'br.destination', // Selecting destination from bus_routes table alias br
+
+                DB::raw('CONCAT(d.last_name, ", ", d.first_name) AS full_name') // Concatenating last_name and first_name from drivers table alias d
+            )
+            ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
+            ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->where('buses.bus_id', '=', $id)
+            ->get()
+            ->first();
+
+
+
+        return view('bus_profile', compact('bus'));
+    }
+    // Maynard end
     // Keith
     public function edit_bus(Request $r, string $id)
     {
@@ -29,6 +51,7 @@ class BusController extends Controller
 
         return redirect('/admin/buses')->with('success', 'Successfully edited bus!');
     }
+
 
     public function edit_bus_form(string $id)
     {
@@ -106,9 +129,9 @@ class BusController extends Controller
         return view('add_buses', compact('driver', 'bus_route'));
     }
 
-    public function show_buses()
+    public function show_buses(Request $r)
     {
-
+        $route = BusRoute::all();
         $bus = DB::table('buses')
             ->select(
                 'buses.bus_id', // Selecting bus_id from buses table
@@ -119,9 +142,28 @@ class BusController extends Controller
             )
             ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
             ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
+            ->orderBy('buses.bus_id', 'DESC');
+
+        if ($r->filled("search")) {
+            $bus->where('plate_number', 'LIKE', '%' . $r->input('search') . '%');
+        }
+        if ($r->filled("bus_route_id")) {
+            $bus->where('br.bus_route_id', '=', $r->input('bus_route_id'));
+        }
+        if ($r->filled("service_status")) {
+            $bus->where('service_status', '=', $r->input('service_status'));
+        }
+
+        $bus = $bus
             ->get();
 
-        return view('buses', compact('bus'));
+        $total_buses = Bus::query()
+            ->select(DB::raw('COUNT(*) AS total'))
+            ->get()
+            ->first();
+
+
+        return view('buses', compact('bus', 'route', 'total_buses'));
     }
     // -end Maynard
 

@@ -58,6 +58,7 @@ Route::get('/admin/buses/edit/{id}', [BusController::class, 'edit_bus_form']);
 //Maynard
 Route::post('/admin/buses/add', [BusController::class, 'add_bus']);
 Route::get('/admin/buses', [BusController::class, 'show_buses']);
+Route::get('/admin/buses/{id}', [BusController::class, 'profile_bus']);
 //Maynard end
 
 //Keith

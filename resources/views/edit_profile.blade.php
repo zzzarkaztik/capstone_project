@@ -8,7 +8,6 @@
 
 <body class="mt-4 pt-5">
     @include('layouts/navbar')
-    @include('layouts/messages')
 
     <div id=content>
 

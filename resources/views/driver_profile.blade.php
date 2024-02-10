@@ -12,18 +12,47 @@
 
 
     <div id="content">
-        <div class="nobs-card">
-            <h1>Driver Profile</h1>
-            <div class="card-content">
-                <h5 class="card-subtitle">Full Name: <span class="text-large">{{ $driver->last_name }},
-                        {{ $driver->first_name }}</span></h5>
-                <h5 class="card-subtitle">Gender: <span class="text-large">{{ $driver->gender }}</span></h5>
-                <h5 class="card-subtitle">Birthdate: <span class="text-large">{{ $driver->birthdate }}</span></h5>
-                <h5 class="card-subtitle">Assigned Bus ID: <span class="text-large">{{ $driver->bus_id }}</span></h5>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Driver Profile
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Driver ID:</label>
+                                <input type="text" class="form-control" name="driver_id" readonly
+                                    value="{{ $driver->driver_id }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Full Name:</label>
+                                <input type="text" class="form-control" name="full_name" readonly
+                                    value="{{ $driver->last_name }}, {{ $driver->first_name }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender:</label>
+                                <input type="text" class="form-control" name="gender" readonly
+                                    value="{{ $driver->gender }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Birthdate:</label>
+                                <input type="text" class="form-control" name="birthdate" readonly
+                                    value="{{ $driver->birthdate }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Assigned Bus ID:</label>
+                                <input type="text" class="form-control" name="assigned_bus_id" readonly
+                                    value="{{ $driver->bus_id }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
+
+
 
 </body>
 
