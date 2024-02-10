@@ -13,16 +13,29 @@
 
     <div id="content">
         <h1>Schedules</h1>
-        <a href="/admin/schedules/create" class="btn btn-success mb-2">+ ADD SCHEDULE</a>
+        <h6 class="text-black-50">Total Schedules: {{ $total_schedules->total }} <a href="/admin/schedules/create">+ ADD
+                SCHEDULE</a>
+        </h6>
+        <div class="mb-3">
+            <form action="/admin/routes" method="GET" class="row">
+                <div class="col-lg-3">
+                    <input type="text" name="search" class="form-control" value=""
+                        placeholder="Search destination (e.g. Mariveles)" />
+                </div>
+                <div class="col-lg-1 d-flex align-items-end">
+                    <input type="submit" class="btn btn-success align-self-end" value="Search" />
+                </div>
+            </form>
+        </div>
         <table class="table table-hover align-middle">
             <tr>
-                <th>Schedule ID</th>
+                <th>@sortablelink('bus_schedule_id', 'Schedule ID')</th>
                 <th>Bus ID</th>
                 <th>Destination</th>
-                <th>Arrival Time</th>
+                <th>@sortablelink('arrival_time', 'Boarding Time')</th>
                 <th>Departure Time</th>
-                <th>Status</th>
-                <th>Available Seats</th>
+                <th>@sortablelink('status', 'Status')</th>
+                <th>@sortablelink('available_seats', 'Available Seats')</th>
                 <th>Action</th>
             </tr>
             @foreach ($schedule as $s)
@@ -56,6 +69,8 @@
                 </tr>
             @endforeach
         </table>
+        {{ $schedule->links('pagination::bootstrap-5') }}
+
     </div>
 
 </body>

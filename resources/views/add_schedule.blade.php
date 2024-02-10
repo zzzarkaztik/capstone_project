@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts/head')
-    <title>Add Route | ADMIN | TRIDENT BUSLINES</title>
+    <title>Add Schedule | ADMIN | TRIDENT BUSLINES</title>
 
 </head>
 

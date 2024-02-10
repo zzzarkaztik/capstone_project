@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Driver;
 use App\Models\Bus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Kyslik\ColumnSortable\Sortable;
+
 
 class DriverController extends Controller
 {
+    use Sortable;
     // Maynard
     public function edit_driver(Request $r, string $id)
     {
@@ -67,7 +71,7 @@ class DriverController extends Controller
 
         return view('driver_profile', compact('driver'));
     }
-    public function add_driver(request $r)
+    public function add_driver(Request $r)
     {
         $driver = new Driver;
         $driver->first_name = $r->input('first_name');
@@ -101,18 +105,31 @@ class DriverController extends Controller
 
         return view('add_drivers', compact('bus'));
     }
-    public function show_drivers()
+    public function show_drivers(Request $r)
     {
-        $bus = Bus::query()
-            ->select('bus_id', 'plate_number')
-            ->where('driver_id', '=', null)
-            ->get();
-
         $driver = Driver::query()
-            ->select('*')
-            ->get();
+            ->select('*');
+        // Apply any additional conditions based on the request
+        if ($r->filled("search")) {
+            $driver->where(function ($query) use ($r) {
+                $query->where('first_name', 'LIKE', '%' . $r->input('search') . '%')
+                    ->orWhere('last_name', 'LIKE', '%' . $r->input('search') . '%');
+            });
+        }
+        if ($r->filled("gender")) {
+            $driver->where('gender', '=', $r->input('gender'));
+        }
 
-        return view('drivers', compact('driver', 'bus'));
+        // Apply sorting using the sortable() method on the model
+        $driver = $driver->sortable()->paginate(15);
+        $driver->appends($r->except('page'));
+
+        $total_drivers = Driver::query()
+            ->select(DB::raw('COUNT(*) AS total'))
+            ->get()
+            ->first();
+
+        return view('drivers', compact('driver', 'total_drivers'));
     }
     // -end Maynard
 }

@@ -28,6 +28,11 @@ class BusRoute extends Model
 	public $incrementing = false;
 	public $timestamps = false;
 
+	public function busSchedules()
+	{
+		return $this->hasMany(BusSchedule::class, 'bus_route_id');
+	}
+
 	use Sortable;
 	public $sortable = ['bus_route_id', 'destination', 'kilometers', 'price'];
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\BusSchedule;
 use App\Models\Bus;
 
@@ -17,11 +19,24 @@ class BusScheduleController extends Controller
         $schedule = BusSchedule::query()
             ->select('bus_schedules.*', 'br.destination')
             ->join('buses as b', 'b.bus_id', '=', 'bus_schedules.bus_id')
-            ->join('bus_routes as br', 'br.bus_route_id', '=', 'b.bus_route_id')
-            ->orderBy('arrival_time')
-            ->get();
+            ->join('bus_routes as br', 'br.bus_route_id', '=', 'b.bus_route_id');
+        if (request()->has('sort')) {
+            // If sorting criteria is provided by the user, use the sortable method
+            $schedule = $schedule->sortable();
+        } else {
+            // Otherwise, default sorting by arrival_time
+            $schedule = $schedule->orderBy('arrival_time');
+        }
 
-        return view('bus_schedules', compact('schedule'));
+        // Paginate the results
+        $schedule = $schedule->paginate(10);
+
+        $total_schedules = BusSchedule::query()
+            ->select(DB::raw('COUNT(*) AS total'))
+            ->get()
+            ->first();
+
+        return view('bus_schedules', compact('schedule', 'total_schedules'));
     }
 
     /**

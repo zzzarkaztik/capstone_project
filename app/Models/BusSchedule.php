@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 /**
  * Class BusSchedule
@@ -26,6 +27,21 @@ class BusSchedule extends Model
 	protected $table = 'bus_schedules';
 	protected $primaryKey = 'bus_schedule_id';
 	public $timestamps = false;
+
+	use Sortable;
+
+	public function busRoute()
+	{
+		return $this->belongsTo(BusRoute::class, 'bus_route_id');
+	}
+
+	public $sortable = [
+		'bus_schedule_id',
+		'available_seats',
+		'arrival_time', // Sortable column from the bus_schedules table
+		'destination' => 'br.destination', // Sortable column from the bus_routes table (joined table)
+		// Add more sortable columns as needed
+	];
 
 	protected $casts = [
 		'bus_id' => 'int',

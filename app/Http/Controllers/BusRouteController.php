@@ -59,7 +59,9 @@ class BusRouteController extends Controller
     {
         $bus_routes = BusRoute::query()
             ->select('*');
-
+        if ($r->filled("search")) {
+            $bus_routes->where('destination', 'LIKE', '%' . $r->input('search') . '%');
+        }
         $bus_routes = $bus_routes->sortable()->paginate(15);
         $bus_routes->appends($r->except('page'));
 

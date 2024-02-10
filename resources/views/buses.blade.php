@@ -39,7 +39,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3 d-flex align-items-end">
-                    <input type="submit" class="btn btn-success align-self-end" />
+                    <input type="submit" class="btn btn-success align-self-end" value="Search" />
                 </div>
             </form>
         </div>

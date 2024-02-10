@@ -7,6 +7,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+
 
 /**
  * Class Driver
@@ -24,6 +26,10 @@ class Driver extends Model
 	protected $table = 'drivers';
 	protected $primaryKey = 'driver_id';
 	public $timestamps = false;
+
+	use Sortable;
+
+	public $sortable = ['driver_id', 'last_name', 'gender', 'birthdate'];
 
 	protected $casts = [
 		'bus_id' => 'int'

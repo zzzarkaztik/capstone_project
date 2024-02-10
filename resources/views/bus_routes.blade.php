@@ -21,7 +21,7 @@
                         placeholder="Search destination (e.g. Mariveles)" />
                 </div>
                 <div class="col-lg-1 d-flex align-items-end">
-                    <input type="submit" class="btn btn-success align-self-end" />
+                    <input type="submit" class="btn btn-success align-self-end" value="Search" />
                 </div>
             </form>
         </div>
@@ -34,22 +34,30 @@
                 <th>@sortablelink('price', 'Price')</th>
                 <th>Action</th>
             </tr>
-            @foreach ($bus_routes as $br)
+            @if ($bus_routes->isEmpty())
                 <tr>
-                    <td>{{ $br->bus_route_id }}</td>
-                    <td>{{ $br->origin }}</td>
-                    <td>{{ $br->destination }}</td>
-                    <td>{{ $br->kilometers }}</td>
-                    <td>{{ $br->price }}</td>
-                    <td>
-                        <a href="/admin/routes/edit/{{ $br->bus_route_id }}" class="btn btn-warning">Edit</a>
-                        <a data-bs-toggle="modal" data-bs-target="#delete_{{ $br->bus_route_id }}"
-                            class="btn btn-danger">Delete</a>
-                    </td>
-                    @include('layouts/delete_route')
+                    <td colspan="6" class="text-center">No bus routes found.</td>
                 </tr>
-            @endforeach
+            @else
+                @foreach ($bus_routes as $br)
+                    <tr>
+                        <td>{{ $br->bus_route_id }}</td>
+                        <td>{{ $br->origin }}</td>
+                        <td>{{ $br->destination }}</td>
+                        <td>{{ $br->kilometers }}</td>
+                        <td>{{ number_format($br->price, 2, '.', ',') }}</td>
+                        <td>
+                            <a href="/admin/routes/edit/{{ $br->bus_route_id }}" class="btn btn-warning">Edit</a>
+                            <a data-bs-toggle="modal" data-bs-target="#delete_{{ $br->bus_route_id }}"
+                                class="btn btn-danger">Delete</a>
+                        </td>
+                        @include('layouts/delete_route')
+                    </tr>
+                @endforeach
+            @endif
         </table>
+        {{ $bus_routes->links('pagination::bootstrap-5') }}
+
     </div>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
