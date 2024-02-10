@@ -12,14 +12,26 @@
 
     <div id="content">
         <h1>Routes</h1>
-        <a href="/admin/routes/add" class="btn btn-success mb-2">+ ADD ROUTES</a>
+        <h6 class="text-black-50">Total Routes: {{ $total_routes->total }} <a href="/admin/routes/add">+ ADD ROUTES</a>
+        </h6>
+        <div class="mb-3">
+            <form action="/admin/routes" method="GET" class="row">
+                <div class="col-lg-3">
+                    <input type="text" name="search" class="form-control" value=""
+                        placeholder="Search destination (e.g. Mariveles)" />
+                </div>
+                <div class="col-lg-1 d-flex align-items-end">
+                    <input type="submit" class="btn btn-success align-self-end" />
+                </div>
+            </form>
+        </div>
         <table class="table table-hover align-middle">
             <tr>
-                <th>#</th>
+                <th>@sortablelink('bus_route_id', 'Route #') </th>
                 <th>Origin</th>
-                <th>Destination</th>
-                <th>Distance (km)</th>
-                <th>Price</th>
+                <th>@sortablelink('destination', 'Destination')</th>
+                <th>@sortablelink('kilometers', 'Distance (km)')</th>
+                <th>@sortablelink('price', 'Price')</th>
                 <th>Action</th>
             </tr>
             @foreach ($bus_routes as $br)

@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 /**
  * Class Bus
@@ -28,6 +29,10 @@ class Bus extends Model
 	protected $primaryKey = 'bus_id';
 	public $incrementing = false;
 	public $timestamps = false;
+
+	use Sortable;
+
+	public $sortable = ['bus_id', 'plate_number', 'bus_route_id'];
 
 	protected $casts = [
 		'bus_id' => 'int',

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\BusRoute;
 
 class BusRouteController extends Controller
@@ -54,15 +54,23 @@ class BusRouteController extends Controller
         return redirect("/admin/routes")
             ->with('success', 'Successfully added route!');
     }
-
-    public function show_route()
+    //maynard
+    public function show_route(Request $r)
     {
         $bus_routes = BusRoute::query()
-            ->select('*')
-            ->get();
+            ->select('*');
 
-        return view('bus_routes', compact('bus_routes'));
+        $bus_routes = $bus_routes->sortable()->paginate(15);
+        $bus_routes->appends($r->except('page'));
+
+        $total_routes = BusRoute::query()
+            ->select(DB::raw('COUNT(*) AS total'))
+            ->get()
+            ->first();
+
+        return view('bus_routes', compact('bus_routes', 'total_routes'));
     }
+    //maynard
 
     public function add_route_form()
     {

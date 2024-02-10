@@ -7,6 +7,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+
 
 /**
  * Class BusRoute
@@ -25,6 +27,9 @@ class BusRoute extends Model
 	protected $primaryKey = 'bus_route_id';
 	public $incrementing = false;
 	public $timestamps = false;
+
+	use Sortable;
+	public $sortable = ['bus_route_id', 'destination', 'kilometers', 'price'];
 
 	protected $casts = [
 		'bus_route_id' => 'int',

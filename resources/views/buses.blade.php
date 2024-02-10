@@ -13,8 +13,9 @@
 
     <div id="content">
         <h1>Buses</h1>
-        <h6 class="text-black-50">Total Buses: {{ $total_buses->total }}</h6>
-        <a href="/admin/buses/add" class="btn btn-success mb-2">+ ADD BUS</a>
+        <h6 class="text-black-50">Total Buses: {{ $total_buses->total }} <a href="/admin/buses/add">+
+                ADD BUS</a></h6>
+
         <div class="mb-3">
             <form action="/admin/buses" method="GET" class="row">
                 <div class="col-lg-3">
@@ -46,9 +47,9 @@
 
         <table class="table table-hover align-middle">
             <tr>
-                <th>Bus ID</th>
-                <th>Plate Number</th>
-                <th>Destination</th>
+                <th>@sortablelink('bus_id', 'Bus ID')</th>
+                <th>@sortablelink('plate_number', 'Plate Number')</th>
+                <th>@sortablelink('bus_route_id', 'Route ID - Destination')</th>
                 <th>Driver</th>
                 <th>Service Status</th>
                 <th>Action</th>
@@ -62,7 +63,7 @@
                     <tr>
                         <td>{{ $b->bus_id }}</td>
                         <td>{{ $b->plate_number }}</td>
-                        <td>{{ $b->destination }}</td>
+                        <td>#{{ $b->bus_route_id }} - {{ $b->destination }}</td>
                         <td>{{ $b->full_name }}</td>
                         <td>{{ $b->service_status == 'not_in_service' ? 'Not in Service' : 'In Service' }}</td>
                         <td>
@@ -76,6 +77,8 @@
                 @endforeach
             @endif
         </table>
+        {{ $bus->links('pagination::bootstrap-5') }}
+
     </div>
 
 </body>

@@ -10,9 +10,12 @@ use App\Models\BusRoute;
 use App\Models\Driver;
 use App\Models\BusSchedule;
 use App\Models\Transaction;
+use Kyslik\ColumnSortable\Sortable;
+
 
 class BusController extends Controller
 {
+    use Sortable;
     // Maynard
     public function profile_bus(string $id)
     {
@@ -132,30 +135,34 @@ class BusController extends Controller
     public function show_buses(Request $r)
     {
         $route = BusRoute::all();
-        $bus = DB::table('buses')
+
+        $busQuery = Bus::query()
             ->select(
-                'buses.bus_id', // Selecting bus_id from buses table
-                'buses.plate_number', // Selecting plate_number from buses table
-                'br.destination', // Selecting destination from bus_routes table alias br
+                'buses.bus_id',
+                'buses.bus_route_id',
+                'buses.plate_number',
+                'br.destination',
                 'buses.service_status',
-                DB::raw('CONCAT(d.last_name, ", ", d.first_name) AS full_name') // Concatenating last_name and first_name from drivers table alias d
+                DB::raw('CONCAT(d.last_name, ", ", d.first_name) AS full_name')
             )
             ->leftJoin('drivers AS d', 'd.driver_id', '=', 'buses.driver_id')
-            ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id')
-            ->orderBy('buses.bus_id', 'DESC');
+            ->leftJoin('bus_routes AS br', 'br.bus_route_id', '=', 'buses.bus_route_id');
 
+        // Apply any additional conditions based on the request
         if ($r->filled("search")) {
-            $bus->where('plate_number', 'LIKE', '%' . $r->input('search') . '%');
+            $busQuery->where('plate_number', 'LIKE', '%' . $r->input('search') . '%');
         }
         if ($r->filled("bus_route_id")) {
-            $bus->where('br.bus_route_id', '=', $r->input('bus_route_id'));
+            $busQuery->where('br.bus_route_id', '=', $r->input('bus_route_id'));
         }
         if ($r->filled("service_status")) {
-            $bus->where('service_status', '=', $r->input('service_status'));
+            $busQuery->where('service_status', '=', $r->input('service_status'));
         }
 
-        $bus = $bus
-            ->get();
+        // Apply sorting using the sortable() method on the model
+        $bus = $busQuery->sortable()->paginate(15);
+        $bus->appends($r->except('page'));
+
 
         $total_buses = Bus::query()
             ->select(DB::raw('COUNT(*) AS total'))
