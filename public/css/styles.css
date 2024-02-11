@@ -10,9 +10,9 @@
 
 body {
     font-family: "Rubik", sans-serif;
-    background-image: url("/img/background.jpg");
+    /* background-image: url("/img/background.jpg");
     background-color: #1a1a1a; /* Fallback color */
-    /* background-attachment: fixed; /* Make the background fixed */
+    background-attachment: fixed; /* Make the background fixed */
     backdrop-filter: blur(5px); */
 }
 
@@ -113,7 +113,7 @@ footer {
 }
 
 #sidebar {
-    height: 100%;
+    height: 100vh;
     width: 200px;
     position: fixed;
     background-color: var(--white);
@@ -143,6 +143,7 @@ footer {
 #content {
     margin-left: 200px;
     padding: 16px;
+    height: 100vh;
 }
 
 .tbg {

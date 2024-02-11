@@ -6,7 +6,7 @@
     <title>Trident Buslines | Terminal</title>
 </head>
 
-<body class="mt-5 pt-2">
+<body class="pt-5">
     @include('layouts/navbar')
 
     <div class="container">

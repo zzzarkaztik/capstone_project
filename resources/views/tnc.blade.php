@@ -6,7 +6,7 @@
     <title>Register | TRIDENT BUSLINES</title>
 </head>
 
-<body class="mt-5 py-3">
+<body class="pt-5">
     @include('layouts/navbar')
 
     <div class="m-5">

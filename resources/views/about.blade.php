@@ -6,7 +6,7 @@
     <title>Trident Buslines | About Us</title>
 </head>
 
-<body>
+<body class="pt-5">
     @include('layouts/navbar')
 
     <div class="container">
