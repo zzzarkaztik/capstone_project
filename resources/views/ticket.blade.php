@@ -25,7 +25,7 @@
             <td>{{$t -> ticket_id}}</td>
             <td>{{$t -> bus_id}}</td>
             <td>{{$t -> destination}}</td>
-            <td>{{ date('h:i A', strtotime($s->arrival_time)) }} - {{ date('h:i A', strtotime($s->departure_time)) }}</td>
+            <td>{{ date('h:i A', strtotime($t->arrival_time)) }} - {{ date('h:i A', strtotime($t->departure_time)) }}</td>
             <td>{{$t -> order_date}}</td>
             <td>₱{{$t -> total_price}}</td>
             <td>{{$t -> type}}</td>
