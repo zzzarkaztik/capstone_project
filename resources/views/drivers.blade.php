@@ -73,6 +73,10 @@
                                 <a href="/admin/drivers/edit/{{ $d->driver_id }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                <a data-bs-toggle="modal" data-bs-target="#delete_{{ $d->driver_id }}"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
