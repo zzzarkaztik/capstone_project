@@ -46,7 +46,7 @@
                                 <a class="dropdown-item" href="/profile">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="/transactions">My Transactions</a>
+                                <a class="dropdown-item" href="/ticket">My Tickets</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">Settings</a>
