@@ -11,6 +11,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "chart.js": "^4.4.1",
         "cors": "^2.8.5",
         "mdb-ui-kit": "^7.1.0"
     }

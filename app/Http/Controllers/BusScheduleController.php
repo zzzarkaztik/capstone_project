@@ -22,7 +22,17 @@ class BusScheduleController extends Controller
             ->join('buses as b', 'b.bus_id', '=', 'bus_schedules.bus_id')
             ->join('bus_routes as br', 'br.bus_route_id', '=', 'b.bus_route_id');
         if ($r->filled("search")) {
-            $schedule->where('destination', 'LIKE', '%' . $r->input('search') . '%');
+            $searchField = $r->input('search_field'); // Get the selected search field
+            $searchTerm = $r->input('search');
+
+            // Conditional WHERE clauses based on search field
+            if ($searchField == 'destination') {
+                $schedule->where('br.destination', 'LIKE', '%' . $searchTerm . '%');
+            } elseif ($searchField == 'bus_schedule_id') {
+                $schedule->where('bus_schedules.bus_schedule_id', 'LIKE', '%' . $searchTerm . '%');
+            } elseif ($searchField == 'bus_id') {
+                $schedule->where('b.bus_id', 'LIKE', '%' . $searchTerm . '%');
+            }
         }
         if (request()->has('sort')) {
             // If sorting criteria is provided by the user, use the sortable method

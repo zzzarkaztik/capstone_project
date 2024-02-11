@@ -10,6 +10,7 @@ use App\Models\BusRoute;
 use App\Models\Driver;
 use App\Models\BusSchedule;
 use App\Models\Transaction;
+use App\Models\Ticket;
 use Kyslik\ColumnSortable\Sortable;
 
 
@@ -208,6 +209,19 @@ class BusController extends Controller
             ->get()
             ->first();
 
+
         return view('dashboard', compact('total_buses', 'total_routes', 'total_schedules', 'total_bookings'));
+    }
+
+    public function getOrderGraphData()
+    {
+        $data = DB::select("SELECT COUNT(ticket_id) AS ticket_sales, br.destination 
+                        FROM tickets AS t 
+                        JOIN bus_schedules AS bs ON bs.bus_schedule_id = t.bus_schedule_id 
+                        JOIN buses AS b ON b.bus_id = bs.bus_id 
+                        JOIN bus_routes AS br ON br.bus_route_id = b.bus_route_id 
+                        GROUP BY destination");
+
+        return response()->json($data);
     }
 }

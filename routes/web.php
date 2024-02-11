@@ -94,6 +94,7 @@ Route::middleware(['checkSessionAdmin'])->group(function () {
 
     Route::resource('/admin/schedules', BusScheduleController::class);
     Route::get('/admin/schedules/generate/{routeId}', [BusScheduleController::class, 'generateSchedule']);
+    Route::get('/getOrderGraphData', [BusController::class, 'getOrderGraphData'])->name('getOrderGraphData');
     // Maynard end
 
     // Keith
