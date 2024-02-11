@@ -75,6 +75,8 @@ class TransactionController extends Controller
     {
         $sched = BusSchedule::query()
             ->select('*')
+            ->join('buses', 'buses.bus_id', '=', 'bus_schedules.bus_id')
+            ->join('bus_routes', 'bus_routes.bus_route_id', '=', 'buses.bus_route_id')
             ->where('available_seats', '>', '0')
             ->get();
         return view('user_booking', compact('sched'));

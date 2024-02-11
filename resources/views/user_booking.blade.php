@@ -42,7 +42,11 @@
                 <div class="col-lg-3">
                     <div class="card mt-4 pt-5">
                         <div class="card-body">
-                            <h5 class="card-title">{{$s -> bus_schedule_id}}</span></h5>
+                            <p>Trip #{{$s -> bus_schedule_id}}</p>
+                            <p>Bus #{{$s -> bus_id}} - {{$s -> destination}}</p>
+                            <p>Bus Arrival: {{$s -> arrival_time}}</p>
+                            <p>Departure Time: {{$s -> departure_time}}</p>
+                            <p>Seats available: {{$s -> available_seats}}</p>
                             <a class="btn btn-danger deduct_button" id="deduct_{{$s -> bus_schedule_id}}">-</a>
                             <input type="number" style="width: 50px" min="0" max="1" value="0" id="book_{{$s -> bus_schedule_id}}" name="book_{{$s -> bus_schedule_id}}">
                             <a class="btn btn-primary add_button" id="add_{{$s -> bus_schedule_id}}">+</a>
