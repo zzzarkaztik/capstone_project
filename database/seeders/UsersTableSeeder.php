@@ -21,17 +21,6 @@ class UsersTableSeeder extends Seeder
         \DB::table('users')->insert(array (
             0 => 
             array (
-                'user_id' => 1,
-                'first_name' => 'Yuri',
-                'last_name' => 'Boyja',
-                'email' => 'yuriboyka@tridentbuslines.com',
-                'password' => '12345678',
-                'role' => 'admin',
-                'user_created' => '2024-02-05',
-                'type' => 'admin',
-            ),
-            1 => 
-            array (
                 'user_id' => 2,
                 'first_name' => 'John',
                 'last_name' => 'Doe',
@@ -41,7 +30,7 @@ class UsersTableSeeder extends Seeder
                 'user_created' => '2024-02-06',
                 'type' => 'admin',
             ),
-            2 => 
+            1 => 
             array (
                 'user_id' => 4,
                 'first_name' => 'Betong',
@@ -52,7 +41,7 @@ class UsersTableSeeder extends Seeder
                 'user_created' => '2024-02-06',
                 'type' => 'senior_citizen',
             ),
-            3 => 
+            2 => 
             array (
                 'user_id' => 5,
                 'first_name' => 'Maynard Arvin',

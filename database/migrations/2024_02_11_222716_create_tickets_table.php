@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('drivers', function (Blueprint $table) {
-            $table->increments('driver_id');
-            $table->string('first_name', 50);
-            $table->string('last_name', 50);
-            $table->integer('bus_id')->nullable();
-            $table->string('gender', 15);
-            $table->date('birthdate');
+        Schema::create('tickets', function (Blueprint $table) {
+            $table->integer('ticket_id', true);
+            $table->integer('bus_schedule_id');
+            $table->integer('transaction_id');
+            $table->string('type', 20);
+            $table->decimal('price', 10)->nullable();
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('tickets');
     }
 };

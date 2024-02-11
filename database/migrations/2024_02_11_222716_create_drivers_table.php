@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bus_routes', function (Blueprint $table) {
-            $table->increments('bus_route_id');
-            $table->string('origin', 75)->nullable();
-            $table->string('destination', 75)->nullable();
-            $table->integer('kilometers')->nullable();
-            $table->decimal('price', 10)->nullable();
+        Schema::create('drivers', function (Blueprint $table) {
+            $table->integer('driver_id', true);
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
+            $table->integer('bus_id')->nullable();
+            $table->string('gender', 15);
+            $table->date('birthdate');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bus_routes');
+        Schema::dropIfExists('drivers');
     }
 };

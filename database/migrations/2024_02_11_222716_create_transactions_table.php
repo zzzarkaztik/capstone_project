@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('drivers', function (Blueprint $table) {
-            $table->increments('driver_id');
-            $table->string('first_name', 50);
-            $table->string('last_name', 50);
-            $table->integer('bus_id')->nullable();
-            $table->string('gender', 15);
-            $table->date('birthdate');
+        Schema::create('transactions', function (Blueprint $table) {
+            $table->integer('transaction_id', true);
+            $table->integer('user_id');
+            $table->decimal('total_price', 10)->nullable();
+            $table->dateTime('order_date')->useCurrent();
+            $table->string('order_status', 20)->default('pending');
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('drivers');
+        Schema::dropIfExists('transactions');
     }
 };

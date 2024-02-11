@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('buses', function (Blueprint $table) {
-            $table->increments('bus_id');
+            $table->integer('bus_id', true);
             $table->string('plate_number', 8)->nullable();
             $table->integer('bus_route_id')->nullable();
             $table->integer('driver_id')->nullable();
-            $table->date('bus_service_start')->nullable();
+            $table->date('bus_service_start')->nullable()->useCurrent();
             $table->string('service_status', 20);
         });
     }

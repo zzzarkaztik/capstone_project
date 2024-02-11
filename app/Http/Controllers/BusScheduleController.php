@@ -74,6 +74,7 @@ class BusScheduleController extends Controller
     {
         $s = new BusSchedule;
         $s->bus_id = $r->input("bus_id");
+        $s->bus_route_id = Bus::where('bus_id', $s->bus_id)->first()->bus_route_id;
         $s->arrival_time = $r->input("arrival_time");
         if (is_null($r->input("departure_time"))) {
             $arrival = Carbon::parse($r->input("arrival_time"));
@@ -82,6 +83,7 @@ class BusScheduleController extends Controller
             $s->departure_time = $r->input("departure_time");
         }
         $s->status = $r->input("status");
+        $s->date_posted = now();
         $s->save();
 
         return redirect('/admin/schedules')->with('success', 'New schedule added.');

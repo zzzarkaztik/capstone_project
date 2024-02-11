@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tickets', function (Blueprint $table) {
-            $table->increments('ticket_id');
-            $table->integer('transaction_id');
-            $table->string('type', 20);
-            $table->decimal('price', 10)->nullable();
+        Schema::create('notification', function (Blueprint $table) {
+            $table->integer('notif_id', true);
+            $table->string('content', 250);
+            $table->integer('user_id');
+            $table->dateTime('date_sent')->useCurrent();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tickets');
+        Schema::dropIfExists('notification');
     }
 };
