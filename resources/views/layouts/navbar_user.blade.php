@@ -3,40 +3,47 @@
     <nav class="navbar navbar-expand-lg bg-body-danger">
         <!-- Container wrapper -->
         <div class="container-fluid">
+            <!-- Navbar brand -->
+            <div class="me-4 py-1">
+                <a class="navbar-brand me-auto ms-auto" href="/">
+                    <img src="/img/trident-logo.svg" width="130px" alt="MDB Logo" loading="lazy" />
+                </a>
+            </div>
             <!-- Toggle button -->
-            <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="navbarToggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars text-white"></i>
             </button>
 
-            <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <img src="/img/trident-logo.svg" width="130px" alt="MDB Logo" loading="lazy" />
-                </a>
-                <!-- Left links -->
-                <div class="d-flex ms-2 me-auto mb-lg-0">
-                    <a class="nav-link me-2" href="/">HOME</a>
-                    <a class="nav-link me-2" href="#">TERMINALS</a>
-                    <a class="nav-link " href="/book">BOOK A TICKET</a>
-                </div>
-                <!-- Left links -->
-            </div>
-            <!-- Collapsible wrapper -->
 
-            <!-- Right elements -->
-            <div class="d-flex align-items-center">
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <!-- Left links -->
+                <ul class="navbar-nav mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link me-2 mr-lg-2" href="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-2" href="#">TERMINALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/book">BOOK A TICKET</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">ABOUT US</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+
                 <!-- Avatar -->
-                @if (Session::get('user_id'))
-                <div class="d-flex align-items-center">
-                    <!-- Avatar -->
+                <div class="d-flex align-items-center ms-auto">
+                    @if (Session::get('user_id'))
                     <div class="dropdown">
                         <a class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="border border-solid rounded-circle" height="40" alt="Black and White Portrait of a Man" loading="lazy" />
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" id="dropdownMenu"> <!-- Added ID to the dropdown-menu -->
                             <li>
-                                <a class="dropdown-item" href="/profile">My profile</a>
+                                <a class="dropdown-item" href="/profile">My Profile</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="/transactions">My Transactions</a>
@@ -52,16 +59,36 @@
                             </li>
                         </ul>
                     </div>
+                    @else
+                    <a class="me-3 nav-link" href="/login">LOGIN</a>
+                    @endif
                 </div>
-                @else
-                <a class="me-3 nav-link" href="/login">LOGIN</a>
-                @endif
+                <!-- Avatar -->
             </div>
-            <!-- Right elements -->
+            <!-- Collapsible wrapper -->
         </div>
         <!-- Container wrapper -->
-
     </nav>
     @include('layouts/messages')
 </div>
 <!-- Navbar -->
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+    function updateDropdownPosition() {
+        var dropdownMenu = document.getElementById('dropdownMenu');
+        if (window.innerWidth <= 991) {
+            dropdownMenu.classList.remove('dropdown-menu-end');
+            dropdownMenu.classList.add('dropdown-menu-start');
+        } else {
+            dropdownMenu.classList.remove('dropdown-menu-start');
+            dropdownMenu.classList.add('dropdown-menu-end');
+        }
+    }
+    window.onload = updateDropdownPosition;
+    window.onresize = updateDropdownPosition;
+    document.getElementById('navbarToggler').addEventListener('click', updateDropdownPosition);
+</script>

@@ -6,61 +6,56 @@
     <title>Edit Profile | TRIDENT BUSLINES</title>
 </head>
 
-<body class="mt-4 pt-5">
+<body class="mt-5 pt-3">
     @include('layouts/navbar')
 
-    <div id=content>
+    <div class="container my-5 py-3">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="/img/trident-logo.png" alt="trident logo" class="mx-auto d-block mb-4" style="width: 250px;">
+                        <form action="/profile/edit" method="POST">
+                            @csrf
+                            <!-- First Name input -->
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">First Name:</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $user->first_name }}">
+                            </div>
 
-        <div class="vh-100 d-flex justify-content-center align-items-center text-center">
+                            <!-- Last Name input -->
+                            <div class="mb-3">
+                                <label for="last_name" class="form-label">Last Name:</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" value="{{ $user->last_name }}">
+                            </div>
 
-            <div class="m-5 p-5 w-50">
-                <img src="/img/trident-logo.png" alt="trident logo" width="250px">
-                <form action="/profile/edit" method="POST">
-                    @csrf
-                    <!-- First Name input -->
-                    <div class="form-outline my-4" data-mdb-input-init>
-                        <input type="text" class="form-control" name="first_name" value="{{ $user->first_name }}" />
-                        <label class="form-label">First Name</label>
+                            <!-- Email input -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address:</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
+                            </div>
+
+                            <!-- Passenger Type dropdown -->
+                            <div class="mb-3">
+                                <label for="type" class="form-label">Passenger Type:</label>
+                                <select class="form-select" id="type" name="type">
+                                    <option value="regular" {{ $user->type == 'regular' ? 'selected' : '' }}>Regular</option>
+                                    <option value="senior_citizen" {{ $user->type == 'senior_citizen' ? 'selected' : '' }}>Senior Citizen</option>
+                                    <option value="pwd" {{ $user->type == 'pwd' ? 'selected' : '' }}>PWD</option>
+                                    <option value="student" {{ $user->type == 'student' ? 'selected' : '' }}>Student</option>
+                                </select>
+                            </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block">Confirm Changes</button>
+                        </form>
                     </div>
-
-                    <!-- Last Name input -->
-                    <div class="form-outline my-4" data-mdb-input-init>
-                        <input type="text" class="form-control" name="last_name" value="{{ $user->last_name }}" />
-                        <label class="form-label">Last Name</label>
-                    </div>
-
-                    <!-- Email input -->
-                    <div class="form-outline my-4" data-mdb-input-init>
-                        <input type="email" class="form-control" name="email" value="{{ $user->email }}" />
-                        <label class="form-label">Email address</label>
-                    </div>
-
-                    <!-- Passenger Type dropdown -->
-                    <div class="form-outline mb-4" data-mdb-input-init>
-                        <select class="form-select" name="type">
-                            <option value="regular" {{ $user->type == 'regular' ? 'selected' : '' }}>Regular</option>
-                            <option value="senior_citizen" {{ $user->type == 'senior_citizen' ? 'selected' : '' }}>
-                                Senior
-                                Citizen</option>
-                            <option value="pwd" {{ $user->type == 'pwd' ? 'selected' : '' }}>PWD</option>
-                            <option value="student" {{ $user->type == 'student' ? 'selected' : '' }}>Student</option>
-                        </select>
-                        <label class="form-label">Passenger Type</label>
-                    </div>
-                    <br>
-
-
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-4">Confirm Changes</button>
-
-
-                </form>
+                </div>
             </div>
         </div>
-
     </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+    @include('layouts/footer')
 </body>
 
 </html>
