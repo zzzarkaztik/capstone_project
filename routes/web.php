@@ -38,6 +38,9 @@ Route::get('/terms_and_conditions', function () {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/terminals', function () {
+    return view('terminals');
+});
 Route::get('/passenger_info', function () {
     return view('passenger_info');
 });

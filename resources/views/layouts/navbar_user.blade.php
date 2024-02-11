@@ -23,7 +23,7 @@
                         <a class="nav-link me-2 mr-lg-2" href="/">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link me-2" href="#">TERMINALS</a>
+                        <a class="nav-link me-2" href="/terminals">TERMINALS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/book">BOOK A TICKET</a>
@@ -46,7 +46,7 @@
                                 <a class="dropdown-item" href="/profile">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="/ticket">My Tickets</a>
+                                <a class="dropdown-item" href="/transactions">My Transactions</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">Settings</a>

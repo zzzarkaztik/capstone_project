@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts/head')
-    <title>About Trident Buslines</title>
+    <title>Trident Buslines | About Us</title>
 </head>
 
 <body>
@@ -11,9 +11,9 @@
 
     <div class="container mt-4 pt-5">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1">
+            <div class="col-lg-12">
                 <h2 class="text-center">About Us</h2>
-                <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                <div>
                     <h3>Our Mission</h3>
                     <p>At Trident Buslines, our mission is to provide safe, reliable, and comfortable transportation services, connecting communities and delivering exceptional experiences to our passengers. We are dedicated to maintaining the highest standards of service, safety, and customer satisfaction.</p>
                     <p>We believe that travel is more than just reaching a destination; it's about creating memorable journeys. Our mission is driven by the following key principles:</p>
