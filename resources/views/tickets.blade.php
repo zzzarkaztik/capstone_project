@@ -3,14 +3,14 @@
 
 <head>
     @include('layouts/head')
-    <title>My Tickets</title>
+    <title>Ticket Receipts</title>
 
 </head>
 
 <body>
     @include('layouts/navbar')
     <div class="container mt-4 pt-5">
-        <h1>My Tickets</h1>
+        <h1>Successfully Booked Tickets</h1>
         <table class="table">
             <tr>
                 <th>Ticket #</th>

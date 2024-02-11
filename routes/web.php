@@ -55,6 +55,7 @@ Route::middleware(['checkSessionUser'])->group(function () {
     //Keith
     Route::get('/book', [TransactionController::class, 'index']);
     Route::post('/book', [TransactionController::class, 'book_ticket']);
+    Route::get('/ticket', [TransactionController::class, 'view_ticket']);
     //
 });
 

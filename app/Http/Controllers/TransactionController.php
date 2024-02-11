@@ -12,6 +12,16 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+    public function view_ticket()
+    {
+        $tickets = Transaction::query()
+            ->select('*')
+            ->where('user_id', '=', Session::get('user_id'))
+            ->get();
+
+        return view('ticket', compact('tickets'));
+    }
+
     public function book_ticket(Request $r)
     {
         $book = new Transaction;
