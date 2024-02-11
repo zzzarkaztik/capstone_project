@@ -12,80 +12,73 @@
 
 
     <div id="content">
-        <div class="row gy-3 mb-3">
-            <div class="col-lg-3">
-                <div class="card border">
-                    <div class="card-body">
-                        <h5 class="card-title p-2 text-white text-center rounded bg-success"><i
-                                class="ri-road-map-fill"></i> Routes</h5>
-                        <span class="card-text">
-                            Total Routes:
-                        </span>
-                        <h4 class="text-success">{{ $total_routes->total }}</h4>
-
-                        <a href="/admin/routes" class="btn btn-success"><i class="ri-eye-fill"></i> View</a>
+        <div class="container-fluid">
+            <div class="row gy-3 mb-3">
+                <div class="col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-success text-white">
+                            <i class="ri-road-map-fill"></i> Routes
+                        </div>
+                        <div class="card-body">
+                            <span class="card-text">Total Routes:</span>
+                            <h4 class="text-success">{{ $total_routes->total }}</h4>
+                            <a href="/admin/routes" class="btn btn-success"><i class="ri-eye-fill"></i> View</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card border">
-                    <div class="card-body">
-                        <h5 class="card-title p-2 text-white text-center rounded"><i class="ri-bus-fill"></i> Buses
-                        </h5>
-                        <span class="card-text">
-                            Total Buses:
-                        </span>
-                        <h4>{{ $total_buses->total }}</h4>
-
-                        <a href="/admin/buses" class="btn btn-primary"><i class="ri-eye-fill"></i> View</a>
+                <div class="col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <i class="ri-bus-fill"></i> Buses
+                        </div>
+                        <div class="card-body">
+                            <span class="card-text">Total Buses:</span>
+                            <h4 class="text-primary">{{ $total_buses->total }}</h4>
+                            <a href="/admin/buses" class="btn btn-primary"><i class="ri-eye-fill"></i> View</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card border">
-                    <div class="card-body">
-                        <h5 class="card-title p-2 text-white text-center rounded bg-warning"><i
-                                class="ri-calendar-schedule-fill"></i> Schedules</h5>
-                        <span class="card-text">
-                            Total Schedules:
-                        </span>
-                        <h4 class="text-warning">{{ $total_schedules->total }}</h4>
-
-                        <a href="/admin/schedules" class="btn btn-warning text-white"><i class="ri-eye-fill"></i>
-                            View</a>
+                <div class="col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-warning text-white">
+                            <i class="ri-calendar-schedule-fill"></i> Schedules
+                        </div>
+                        <div class="card-body">
+                            <span class="card-text">Total Schedules:</span>
+                            <h4 class="text-warning">{{ $total_schedules->total }}</h4>
+                            <a href="/admin/schedules" class="btn btn-warning"><i class="ri-eye-fill"></i> View</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card border">
-                    <div class="card-body">
-                        <h5 class="card-title p-2 text-white text-center rounded bg-danger"><i
-                                class="ri-coupon-3-fill"></i> Bookings</h5>
-                        <span class="card-text">
-                            Total Bookings:
-                        </span>
-                        <h4 class="text-danger">{{ $total_bookings->total }}</h4>
-                        <a href="/admin/bookings" class="btn btn-danger"><i class="ri-eye-fill"></i> View</a>
+                <div class="col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-danger text-white">
+                            <i class="ri-coupon-3-fill"></i> Bookings
+                        </div>
+                        <div class="card-body">
+                            <span class="card-text">Total Bookings:</span>
+                            <h4 class="text-danger">{{ $total_bookings->total }}</h4>
+                            <a href="/admin/bookings" class="btn btn-danger"><i class="ri-eye-fill"></i> View</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="nobs-card border">
-                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                        <canvas id="myBarChart"></canvas>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="card border">
+                        <div class="card-body">
+                            <canvas id="myBarChart"></canvas>
+                            <p class="m-3 text-center">Ticket Sales Graph</p>
+                        </div>
                     </div>
-                    <p class="m-3">
-                        this is a graph placeholder
-                    </p>
-
-
                 </div>
             </div>
         </div>
+
+    </div>
+
+
     </div>
 
     <script>
