@@ -49,6 +49,7 @@ Route::middleware(['checkSessionUser'])->group(function () {
     Route::get('/profile', [UserController::class, 'show_profile']);
     Route::get('/profile/edit', [UserController::class, 'edit_profile_form']);
     Route::post('/profile/edit', [UserController::class, 'edit_profile']);
+    Route::get('/transactions', [TransactionController::class, 'show_transactions']);
     // 
 
     //Keith

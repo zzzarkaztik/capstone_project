@@ -12,35 +12,44 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+    public function show_transactions(Request $r)
+    {
+        $transaction = Transaction::query()
+            ->select('*')
+            ->where('user_id', '=', Session::get('user_id'))
+            ->get();
+        return view('transactions', compact('transaction'));
+    }
     public function book_ticket(Request $r)
     {
+        $book_status = 'pending';
+
         $book = new Transaction;
         $book->user_id = Session::get('user_id');
+        $book->order_status = $book_status;
         $book->save();
 
         $sched = BusSchedule::query()
-            ->select('*')
-            ->join('buses as b', 'b.bus_id', '=', 'bus_schedules.bus_id')
-            ->join('bus_routes as br', 'br.bus_route_id', '=', 'b.bus_route_id')
             ->where('available_seats', '>', '0')
             ->get();
 
         $tickets = [];
         $totalPrice = 0;
-        for ($i = 0; $i < count($sched); $i++) {
-            $num_book = $r->input('book_' . $sched[$i]->bus_schedule_id);
+        foreach ($sched as $schedule) {
+            $num_book = $r->input('book_' . $schedule->bus_schedule_id);
             if ($num_book > 0) {
                 $ticket = new Ticket;
                 $ticket->transaction_id = $book->transaction_id;
-                $ticket->bus_schedule_id = $sched[$i]->bus_schedule_id;
+                $ticket->bus_schedule_id = $schedule->bus_schedule_id;
                 $user = User::find(Session::get('user_id'));
-                $ticket->type = $user->type;;
-                $ticket->price = $sched[$i]->price;
+                $ticket->type = $user->type;
+                $ticket->price = $schedule->price;
                 $ticket->save();
                 $totalPrice += $ticket->price * $num_book;
                 array_push($tickets, $ticket);
             }
         }
+
         $book->total_price = $totalPrice;
         $book->save();
 
@@ -55,6 +64,7 @@ class TransactionController extends Controller
 
         return view('tickets', compact('book', 'tickets', 'receipt'));
     }
+
 
     public function index()
     {
