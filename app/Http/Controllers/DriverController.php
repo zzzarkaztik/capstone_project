@@ -121,7 +121,7 @@ class DriverController extends Controller
         }
 
         // Apply sorting using the sortable() method on the model
-        $driver = $driver->sortable()->paginate(15);
+        $driver = $driver->sortable()->paginate(10);
         $driver->appends($r->except('page'));
 
         $total_drivers = Driver::query()

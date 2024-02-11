@@ -50,7 +50,7 @@
                 <th>@sortablelink('bus_id', 'Bus ID')</th>
                 <th>@sortablelink('plate_number', 'Plate Number')</th>
                 <th>@sortablelink('bus_route_id', 'Route ID - Destination')</th>
-                <th>Driver</th>
+                <th>@sortablelink('driver_id', 'Driver ID - Name')</th>
                 <th>Service Status</th>
                 <th>Action</th>
             </tr>
@@ -64,7 +64,7 @@
                         <td>{{ $b->bus_id }}</td>
                         <td>{{ $b->plate_number }}</td>
                         <td>#{{ $b->bus_route_id }} - {{ $b->destination }}</td>
-                        <td>{{ $b->full_name }}</td>
+                        <td>#{{ $b->driver_id }} - {{ $b->full_name }}</td>
                         <td>{{ $b->service_status == 'not_in_service' ? 'Not in Service' : 'In Service' }}</td>
                         <td>
                             <a href="/admin/buses/{{ $b->bus_id }}" class="btn btn-primary">View</a>

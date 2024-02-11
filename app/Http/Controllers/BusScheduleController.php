@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 use App\Models\BusSchedule;
 use App\Models\Bus;
+use App\Models\BusRoute;
 
 
 class BusScheduleController extends Controller
@@ -14,12 +15,15 @@ class BusScheduleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $r)
     {
         $schedule = BusSchedule::query()
             ->select('bus_schedules.*', 'br.destination')
             ->join('buses as b', 'b.bus_id', '=', 'bus_schedules.bus_id')
             ->join('bus_routes as br', 'br.bus_route_id', '=', 'b.bus_route_id');
+        if ($r->filled("search")) {
+            $schedule->where('destination', 'LIKE', '%' . $r->input('search') . '%');
+        }
         if (request()->has('sort')) {
             // If sorting criteria is provided by the user, use the sortable method
             $schedule = $schedule->sortable();
@@ -61,7 +65,12 @@ class BusScheduleController extends Controller
         $s = new BusSchedule;
         $s->bus_id = $r->input("bus_id");
         $s->arrival_time = $r->input("arrival_time");
-        $s->departure_time = $r->input("departure_time");
+        if (is_null($r->input("departure_time"))) {
+            $arrival = Carbon::parse($r->input("arrival_time"));
+            $s->departure_time = $arrival->addMinutes(30);
+        } else {
+            $s->departure_time = $r->input("departure_time");
+        }
         $s->status = $r->input("status");
         $s->save();
 
@@ -122,5 +131,42 @@ class BusScheduleController extends Controller
         BusSchedule::where('bus_schedule_id', '=', $id)
             ->delete();
         return redirect('/admin/schedules')->with('success', 'Schedule removed successfully.');
+    }
+
+    public function generateSchedule(Request $request, $routeId)
+    {
+        $route = BusRoute::findOrFail($routeId);
+        $startTime = Carbon::parse($request->get('start_time', '06:00:00'));
+        $numBuses = $request->get('num_buses', 3);
+
+        $buses = DB::table('buses')
+            ->join('bus_routes', 'buses.bus_route_id', '=', 'bus_routes.bus_route_id') // Corrected Join
+            ->where('buses.service_status', 'in_service')
+            ->where('buses.bus_route_id', $route->id)
+            ->select('buses.*')
+            ->take($numBuses)
+            ->get();
+
+        return $buses;
+
+        $schedules = [];
+        foreach ($buses as $bus) {
+            $currentTime = $startTime->copy();
+            while ($currentTime->isSameDay($startTime)) {
+                $scheduleItem = [
+                    'bus_id' => $bus->id,
+                    'arrival_time' => $currentTime->format('H:i:s'),
+                    'departure_time' => $currentTime->addMinutes(30)->format('H:i:s'),
+                    'status' => 'pending', // Use 'Scheduled' if not storing in the database
+                    'date_posted' => now(),
+                ];
+
+                // Option to store:
+                // BusSchedule::create($scheduleItem); 
+
+                $schedules[] = $scheduleItem;
+                $currentTime->addMinutes(30);
+            }
+        }
     }
 }

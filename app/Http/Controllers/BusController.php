@@ -52,6 +52,11 @@ class BusController extends Controller
                 ]
             );
 
+        $driver = Driver::where('driver_id', '=', $r->input('driver_id'))
+            ->update([
+                'bus_id' => $id
+            ]);
+
         return redirect('/admin/buses')->with('success', 'Successfully edited bus!');
     }
 
@@ -66,7 +71,10 @@ class BusController extends Controller
             ->first();
 
         $route = BusRoute::all();
-        $driver = Driver::where('bus_id', '=', null);
+        $driver = Driver::query()
+            ->select('driver_id', 'last_name', 'first_name')
+            ->where('bus_id', '=', null)
+            ->get();
 
         return view('edit_bus', compact('bus', 'route', 'driver'));
     }
@@ -98,6 +106,9 @@ class BusController extends Controller
         $bus->bus_route_id = $r->input('bus_route_id');
         $bus->service_status = $r->input('service_status');
         $bus->bus_service_start = $r->input('bus_service_start');
+        if ($bus->service_status == 'in_service' && $r->input('bus_service_start') === null) {
+            $bus->bus_service_start = date('Y-m-d'); // Assuming date format is needed
+        }
         $bus->save();
 
         $b = Bus::query()
@@ -141,6 +152,7 @@ class BusController extends Controller
                 'buses.bus_id',
                 'buses.bus_route_id',
                 'buses.plate_number',
+                'buses.driver_id',
                 'br.destination',
                 'buses.service_status',
                 DB::raw('CONCAT(d.last_name, ", ", d.first_name) AS full_name')
@@ -160,7 +172,7 @@ class BusController extends Controller
         }
 
         // Apply sorting using the sortable() method on the model
-        $bus = $busQuery->sortable()->paginate(15);
+        $bus = $busQuery->sortable()->paginate(10);
         $bus->appends($r->except('page'));
 
 

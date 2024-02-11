@@ -43,7 +43,7 @@
                 <th>@sortablelink('last_name', 'Name (Last Name, First Name)')</th>
                 <th>@sortablelink('gender', 'Gender')</th>
                 <th>@sortablelink('birthdate', 'Birthdate')</th>
-                <th>Assigned Bus ID</th>
+                <th>@sortablelink('driver_id', 'Assigned Bus ID')</th>
                 <th>Actions</th>
             </tr>
             @if ($driver->isEmpty())

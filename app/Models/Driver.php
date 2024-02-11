@@ -29,7 +29,7 @@ class Driver extends Model
 
 	use Sortable;
 
-	public $sortable = ['driver_id', 'last_name', 'gender', 'birthdate'];
+	public $sortable = ['driver_id', 'last_name', 'gender', 'birthdate', 'bus_id'];
 
 	protected $casts = [
 		'bus_id' => 'int'

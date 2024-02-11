@@ -49,8 +49,8 @@
                                 @endif
                             </option>
                             @foreach ($driver as $d)
-                                <option value="{{ $d->driver_id }}">({{ $d->driver_id }}){{ $d->last_name }}
-                                    , {{ $d->first_name }}
+                                <option value="{{ $d->driver_id }}">#{{ $d->driver_id }} - {{ $d->last_name }},
+                                    {{ $d->first_name }}
                                 </option>
                             @endforeach
                         </select>

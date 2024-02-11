@@ -32,7 +32,7 @@ class Bus extends Model
 
 	use Sortable;
 
-	public $sortable = ['bus_id', 'plate_number', 'bus_route_id'];
+	public $sortable = ['bus_id', 'plate_number', 'bus_route_id', 'driver_id'];
 
 	protected $casts = [
 		'bus_id' => 'int',

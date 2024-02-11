@@ -93,6 +93,7 @@ Route::middleware(['checkSessionAdmin'])->group(function () {
     Route::delete('/admin/drivers/{id}', [DriverController::class, 'delete_driver']);
 
     Route::resource('/admin/schedules', BusScheduleController::class);
+    Route::get('/admin/schedules/generate/{routeId}', [BusScheduleController::class, 'generateSchedule']);
     // Maynard end
 
     // Keith

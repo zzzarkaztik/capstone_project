@@ -17,7 +17,7 @@
                 SCHEDULE</a>
         </h6>
         <div class="mb-3">
-            <form action="/admin/routes" method="GET" class="row">
+            <form action="/admin/schedules" method="GET" class="row">
                 <div class="col-lg-3">
                     <input type="text" name="search" class="form-control" value=""
                         placeholder="Search destination (e.g. Mariveles)" />
