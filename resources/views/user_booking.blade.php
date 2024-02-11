@@ -69,8 +69,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Trip #{{$s->bus_schedule_id}}</h5>
                             <p>Bus #{{$s->bus_id}} - {{$s->destination}}</p>
-                            <p>Bus Arrival: {{$s->arrival_time}}</p>
-                            <p>Departure Time: {{$s->departure_time}}</p>
+                            <p>Bus Arrival: {{ date('h:i A', strtotime($s->arrival_time)) }}</p>
+                            <p>Departure Time: {{ date('h:i A', strtotime($s->departure_time)) }}</p>
+                            <p>Price: ₱{{$s->price}}</p>
                             <p>Seats available: {{$s->available_seats}}</p>
                             <a class="btn btn-danger deduct_button" id="deduct_{{$s->bus_schedule_id}}">-</a>
                             <input type="number" style="width: 50px; height: 25px" min="0" max="1" value="0" id="book_{{$s->bus_schedule_id}}" name="book_{{$s->bus_schedule_id}}">
