@@ -73,7 +73,7 @@
                             <td>{{ $b->bus_id }}</td>
                             <td>{{ $b->plate_number }}</td>
                             <td>#{{ $b->bus_route_id }} - {{ $b->destination }}</td>
-                            <td>#{{ $b->driver_id }} - {{ $b->full_name }}</td>
+                            <td>#{{ $b->driver_id }} - {{ $b->last_name }}, {{ $b->first_name }}</td>
                             <td>
                                 <span
                                     class="badge bg-{{ $b->service_status == 'in_service' ? 'success' : 'warning' }}">

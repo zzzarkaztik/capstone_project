@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bus_routes', function (Blueprint $table) {
-            $table->integer('bus_route_id', true);
-            $table->string('origin', 75)->nullable();
-            $table->string('destination', 75)->nullable();
-            $table->integer('kilometers')->nullable();
+        Schema::create('tickets', function (Blueprint $table) {
+            $table->increments('ticket_id');
+            $table->integer('transaction_id');
+            $table->string('type', 20);
             $table->decimal('price', 10)->nullable();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bus_routes');
+        Schema::dropIfExists('tickets');
     }
 };

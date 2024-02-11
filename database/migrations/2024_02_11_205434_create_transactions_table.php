@@ -14,11 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->integer('transaction_id', true);
+            $table->increments('transaction_id');
             $table->integer('user_id');
             $table->integer('bus_schedule_id');
             $table->decimal('total_price', 10)->nullable();
-            $table->dateTime('order_date')->useCurrent();
+            $table->timestamp('order_date')->useCurrent();
         });
     }
 

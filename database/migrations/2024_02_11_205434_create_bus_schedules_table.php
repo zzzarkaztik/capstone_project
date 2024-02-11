@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bus_schedules', function (Blueprint $table) {
-            $table->integer('bus_schedule_id', true);
+            $table->increments('bus_schedule_id');
             $table->integer('bus_id');
             $table->integer('bus_route_id');
             $table->time('arrival_time');
             $table->time('departure_time');
             $table->string('status', 25);
-            $table->date('date_posted')->useCurrent();
+            $table->date('date_posted');
         });
     }
 
