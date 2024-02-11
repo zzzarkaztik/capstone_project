@@ -67,16 +67,28 @@
                             <td>{{ $d->bus_id }}</td>
 
                             <td>
-                                <a href="/admin/drivers/{{ $d->driver_id }}" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="/admin/drivers/edit/{{ $d->driver_id }}" class="btn btn-warning btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a data-bs-toggle="modal" data-bs-target="#delete_{{ $d->driver_id }}"
-                                    class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <a href="/admin/drivers/{{ $d->driver_id }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="/admin/drivers/edit/{{ $d->driver_id }}"
+                                            class="btn btn-warning btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <form action="/admin/drivers/{{ $d->driver_id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

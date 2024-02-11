@@ -56,13 +56,23 @@
                             <td>{{ $br->kilometers }}</td>
                             <td>{{ number_format($br->price, 2, '.', ',') }}</td>
                             <td>
-                                <a href="/admin/routes/edit/{{ $br->bus_route_id }}" class="btn btn-warning btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a data-bs-toggle="modal" data-bs-target="#delete_{{ $br->bus_route_id }}"
-                                    class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <a href="/admin/routes/edit/{{ $br->bus_route_id }}"
+                                            class="btn btn-warning btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-2">
+                                        <form action="/admin/routes/{{ $br->bus_route_id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

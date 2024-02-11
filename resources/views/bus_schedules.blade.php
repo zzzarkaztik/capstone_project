@@ -77,14 +77,23 @@
                             </td>
                             <td>{{ $s->available_seats }}</td>
                             <td>
-                                <a href="/admin/schedules/{{ $s->bus_schedule_id }}/edit"
-                                    class="btn btn-warning btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a data-bs-toggle="modal" data-bs-target="#delete_{{ $s->bus_schedule_id }}"
-                                    class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <a href="/admin/schedules/{{ $s->bus_schedule_id }}/edit"
+                                            class="btn btn-warning btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-3">
+                                        <form action="/admin/schedules/{{ $s->bus_schedule_id }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
