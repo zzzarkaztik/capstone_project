@@ -8,7 +8,8 @@
 
 <body class="mt-5 pt-2">
     @include('layouts/navbar')
-    <div class="container my-5 pt-5">
+
+    <div class="container">
         <div class="text-center">
             <img src="img/trident-logo.png" alt="Trident Logo" class="mx-auto mb-4" style="max-width: 300px;">
             <h1 class="mb-4">TERMINALS</h1>

@@ -10,8 +10,14 @@
 
 body {
     font-family: "Rubik", sans-serif;
-    background-color: var(--white);
-    color: var(--dark);
+    background-image: url("/img/background.jpg");
+    background-color: #1a1a1a; /* Fallback color */
+
+    background-repeat: no-repeat; /* Prevent image tiling */
+    background-attachment: fixed; /* Make the background fixed */
+    background-size: cover; /* Cover the entire background */
+
+    backdrop-filter: blur(5px);
 }
 
 a {
