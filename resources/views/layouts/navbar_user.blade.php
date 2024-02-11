@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <!-- Navbar brand -->
             <div class="me-4 py-1">
-                <a class="navbar-brand me-auto ms-auto" href="/">
+                <a class="navbar-brand me-auto ms-auto" href="#">
                     <img src="/img/trident-logo.svg" width="130px" alt="MDB Logo" loading="lazy" />
                 </a>
             </div>
             <!-- Toggle button -->
-            <button id="navbarToggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars text-white"></i>
             </button>
 
@@ -38,12 +38,12 @@
                 <div class="d-flex align-items-center ms-auto">
                     @if (Session::get('user_id'))
                     <div class="dropdown">
-                        <a class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="border border-solid rounded-circle" height="40" alt="Black and White Portrait of a Man" loading="lazy" />
+                        <a class="dropdown-toggle d-flex align-items-center text-white btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Session::get('first_name') }} {{ Session::get('last_name') }}
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" id="dropdownMenu"> <!-- Added ID to the dropdown-menu -->
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li>
-                                <a class="dropdown-item" href="/profile">My Profile</a>
+                                <a class="dropdown-item" href="/profile">My profile</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="/transactions">My Transactions</a>
@@ -75,20 +75,3 @@
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
-
-
-<script>
-    function updateDropdownPosition() {
-        var dropdownMenu = document.getElementById('dropdownMenu');
-        if (window.innerWidth <= 991) {
-            dropdownMenu.classList.remove('dropdown-menu-end');
-            dropdownMenu.classList.add('dropdown-menu-start');
-        } else {
-            dropdownMenu.classList.remove('dropdown-menu-start');
-            dropdownMenu.classList.add('dropdown-menu-end');
-        }
-    }
-    window.onload = updateDropdownPosition;
-    window.onresize = updateDropdownPosition;
-    document.getElementById('navbarToggler').addEventListener('click', updateDropdownPosition);
-</script>
