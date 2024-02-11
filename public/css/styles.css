@@ -95,10 +95,6 @@ footer {
     color: white;
 }
 
-.card-title {
-    background-color: var(--primary);
-}
-
 .bg-white {
     background-color: var(--primary);
 }
