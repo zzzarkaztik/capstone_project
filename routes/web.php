@@ -58,7 +58,8 @@ Route::middleware(['checkSessionUser'])->group(function () {
     //Keith
     Route::get('/book', [TransactionController::class, 'index']);
     Route::post('/book', [TransactionController::class, 'book_ticket']);
-    Route::get('/ticket', [TransactionController::class, 'view_ticket']);
+    Route::get('/ticket', [TransactionController::class, 'my_tickets']);
+    Route::get('/ticket/{id}', [TransactionController::class, 'view_ticket']);
     //
 });
 
@@ -108,6 +109,10 @@ Route::middleware(['checkSessionAdmin'])->group(function () {
     Route::post('/admin/routes', [BusRouteController::class, 'add_route']);
     Route::put('/admin/routes/{id}', [BusRouteController::class, 'edit_route']);
     Route::delete('/admin/routes/{id}', [BusRouteController::class, 'delete_route']);
+
+    Route::get('/admin/bookings', [TransactionController::class, 'booking']);
+    Route::get('/admin/ticket/{id}', [TransactionController::class, 'admin_ticket']);
+    Route::put('/admin/ticket/accept/{id}', [TransactionController::class, 'accept_ticket']);
     // Keith end
 });
 

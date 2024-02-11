@@ -26,7 +26,11 @@
                         <a class="nav-link me-2" href="/terminals">TERMINALS</a>
                     </li>
                     <li class="nav-item">
+                        @if (Session::get('user_id'))
                         <a class="nav-link" href="/book">BOOK A TICKET</a>
+                        @else
+                        <a class="nav-link" href="/login">BOOK A TICKET</a>
+                        @endif
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">ABOUT US</a>
@@ -46,7 +50,7 @@
                                 <a class="dropdown-item" href="/profile">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="/transactions">My Transactions</a>
+                                <a class="dropdown-item" href="/ticket">My Tickets</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">Settings</a>

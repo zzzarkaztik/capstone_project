@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\BusSchedule;
 use App\Models\Transaction;
 use App\Models\Ticket;
@@ -12,7 +14,63 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    public function view_ticket()
+    public function accept_ticket(string $id)
+    {
+        $ticket = Transaction::where('transaction_id', '=', $id)
+            ->update(
+                [
+                    'order_status' => 'reserved',
+                ]
+            );
+
+        return redirect('admin/ticket/' . $id)->with('success', 'Ticket Reserved!');
+    }
+
+    public function admin_ticket(string $id)
+    {
+        $tickets = Transaction::query()
+            ->select('ticket_id', 'buses.bus_id', 'destination', 'arrival_time', 'departure_time', 'transactions.total_price', 'order_date', 'order_status', 'type')
+            ->join('tickets', 'tickets.transaction_id', '=', 'transactions.transaction_id')
+            ->join('bus_schedules', 'bus_schedules.bus_schedule_id', '=', 'tickets.bus_schedule_id')
+            ->join('buses', 'buses.bus_id', '=', 'bus_schedules.bus_id')
+            ->join('bus_routes', 'bus_routes.bus_route_id', '=', 'buses.bus_route_id')
+            ->where('transactions.transaction_id', '=', $id)
+            ->get();
+
+        return view('bookings_ticket', compact('tickets'));
+    }
+
+    public function booking(Request $r)
+    {
+        $book = Transaction::query()
+            ->select('*')
+            ->join('users', 'users.user_id', '=', 'transactions.user_id')
+            ->join('tickets', 'tickets.transaction_id', '=', 'transactions.transaction_id')
+            ->get();
+
+        $total_bookings = Transaction::query()
+            ->select(DB::raw('COUNT(*) AS total'))
+            ->get()
+            ->first();
+
+        return view('bookings', compact('book', 'total_bookings'));
+    }
+
+    public function view_ticket(string $id)
+    {
+        $tickets = Transaction::query()
+            ->select('ticket_id', 'buses.bus_id', 'destination', 'arrival_time', 'departure_time', 'transactions.total_price', 'order_date', 'order_status', 'type')
+            ->join('tickets', 'tickets.transaction_id', '=', 'transactions.transaction_id')
+            ->join('bus_schedules', 'bus_schedules.bus_schedule_id', '=', 'tickets.bus_schedule_id')
+            ->join('buses', 'buses.bus_id', '=', 'bus_schedules.bus_id')
+            ->join('bus_routes', 'bus_routes.bus_route_id', '=', 'buses.bus_route_id')
+            ->where('transactions.transaction_id', '=', $id)
+            ->get();
+
+        return view('ticket', compact('tickets'));
+    }
+
+    public function my_tickets()
     {
         $tickets = Transaction::query()
             ->select('ticket_id', 'buses.bus_id', 'destination', 'arrival_time', 'departure_time', 'transactions.total_price', 'order_date', 'order_status', 'type')
@@ -23,7 +81,7 @@ class TransactionController extends Controller
             ->where('user_id', '=', Session::get('user_id'))
             ->get();
 
-        return view('ticket', compact('tickets'));
+        return view('my_tickets', compact('tickets'));
     }
 
     public function book_ticket(Request $r)
