@@ -6,10 +6,11 @@
     <title>Register | TRIDENT BUSLINES</title>
 </head>
 
-<body class="mt-5 pt-3">
+<body>
     @include('layouts/navbar')
+    @include('layouts/messages')
 
-    <div class="container">
+    <div class="container my-5 py-3">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -60,8 +61,7 @@
                             {{-- terms and conditions --}}
                             <div class="form-check mb-4">
                                 <input type="checkbox" value="" id="terms_checkbox" class="form-check-input" />
-                                <label for="terms_checkbox" class="form-check-label">I accept the <a
-                                        href="/terms_and_conditions">Terms and
+                                <label for="terms_checkbox" class="form-check-label">I accept the <a href="/terms_and_conditions">Terms and
                                         Conditions</a></label>
                             </div>
                             <!-- Submit button -->

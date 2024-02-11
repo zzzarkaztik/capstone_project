@@ -10,9 +10,7 @@
                 </a>
             </div>
             <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars text-white"></i>
             </button>
 
@@ -39,31 +37,30 @@
                 <!-- Avatar -->
                 <div class="d-flex align-items-center ms-auto">
                     @if (Session::get('user_id'))
-                        <div class="dropdown">
-                            <a class="dropdown-toggle d-flex align-items-center text-white btn" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Session::get('first_name') }} {{ Session::get('last_name') }}
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" href="/profile">My profile</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/ticket">My Tickets</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Settings</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/logout">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle d-flex align-items-center text-white btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Session::get('first_name') }} {{ Session::get('last_name') }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/profile">My profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/transactions">My Transactions</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Settings</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
                     @else
-                        <a class="me-3 nav-link" href="/login">LOGIN</a>
+                    <a class="me-3 nav-link" href="/login">LOGIN</a>
                     @endif
                 </div>
                 <!-- Avatar -->

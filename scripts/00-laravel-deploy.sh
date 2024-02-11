@@ -13,4 +13,11 @@ echo "Running migrations..."
 php artisan migrate --force
 
 echo "Running seeders"
-php artisan db:seed --force
+php artisan db:seed --class=BusesTableSeeder --force
+php artisan db:seed --class=BusRoutesTableSeeder --force
+php artisan db:seed --class=BusSchedulesTableSeeder --force
+php artisan db:seed --class=DriversTableSeeder --force
+php artisan db:seed --class=TicketsTableSeeder --force
+php artisan db:seed --class=TransactionsTableSeeder --force
+php artisan db:seed --class=UsersTableSeeder --force
+

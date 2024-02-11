@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="pt-5">
+<body>
     @include('layouts/navbar')
     <div class="container mt-4 pt-5">
         <h1>Successfully Booked Tickets</h1>
@@ -20,13 +20,13 @@
                 <th>Price</th>
             </tr>
             @foreach ($receipts as $r)
-                <tr>
-                    <td>{{ $r->ticket_id }}</td>
-                    <td>{{ $r->bus_id }}</td>
-                    <td>{{ $r->destination }}</td>
-                    <td>{{ $r->arrival_time }} - {{ $r->departure_time }}</td>
-                    <td>₱{{ $r->total_price }}</td>
-                </tr>
+            <tr>
+                <td>{{$r -> ticket_id}}</td>
+                <td>{{$r -> bus_id}}</td>
+                <td>{{$r -> destination}}</td>
+                <td>{{$r -> arrival_time}} - {{$r -> departure_time}}</td>
+                <td>₱{{$r -> total_price}}</td>
+            </tr>
             @endforeach
         </table>
         <p><a href="/ticket">Go to My Tickets</a></p>

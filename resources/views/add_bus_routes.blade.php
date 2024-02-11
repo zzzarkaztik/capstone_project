@@ -7,7 +7,7 @@
 
 </head>
 
-<body class="pt-5">
+<body class="mt-5 pt-2">
     @include('layouts/navbar')
     @include('layouts/sidenav')
 
