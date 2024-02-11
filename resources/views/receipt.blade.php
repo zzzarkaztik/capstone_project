@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts/head')
-    <title>Ticket Receipts</title>
+    <title>Ticket Receipts | TRIDENT BUSLINES</title>
 
 </head>
 
@@ -19,7 +19,7 @@
                 <th>Schedule</th>
                 <th>Price</th>
             </tr>
-            @foreach ($receipt as $r)
+            @foreach ($receipts as $r)
             <tr>
                 <td>{{$r -> ticket_id}}</td>
                 <td>{{$r -> bus_id}}</td>
@@ -29,6 +29,7 @@
             </tr>
             @endforeach
         </table>
+        <p><a href="/ticket">Go to My Tickets</a></p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
