@@ -23,6 +23,12 @@
             });
         });
     </script>
+    <style>
+        .btn {
+            border-radius: 50px;
+            size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,11 +38,11 @@
             <div class="row">
                 <h1>Available trips:</h1>
                 @csrf
-                @foreach ($sched as $s)
+                @foreach ($schedules as $s)
                 <div class="col-lg-3">
                     <div class="card mt-4 pt-5">
                         <div class="card-body">
-                            <h5 class="card-title">{{$s -> bus_schedule_id}}</span></h5>
+                            <h5 class="card-title">{{$s -> destination}}</span></h5>
                             <a class="btn btn-danger deduct_button" id="deduct_{{$s -> bus_schedule_id}}">-</a>
                             <input type="number" style="width: 50px" min="0" max="1" value="0" id="book_{{$s -> bus_schedule_id}}" name="book_{{$s -> bus_schedule_id}}">
                             <a class="btn btn-primary add_button" id="add_{{$s -> bus_schedule_id}}">+</a>

@@ -6,7 +6,7 @@ use App\Models\BusSchedule;
 use App\Models\Transaction;
 use App\Models\Ticket;
 use App\Models\User;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
@@ -68,10 +68,13 @@ class TransactionController extends Controller
 
     public function index()
     {
-        $sched = BusSchedule::query()
-            ->select('*')
-            ->where('available_seats', '>', '0')
+        $schedules = BusSchedule::query()
+            ->select('bus_schedules.*', 'bus_routes.destination')
+            ->join('buses', 'bus_schedules.bus_id', '=', 'buses.bus_id')
+            ->join('bus_routes', 'buses.bus_route_id', '=', 'bus_routes.bus_route_id')
+            ->where('bus_schedules.available_seats', '>', 0)
             ->get();
-        return view('user_booking', compact('sched'));
+
+        return view('user_booking', compact('schedules'));
     }
 }
