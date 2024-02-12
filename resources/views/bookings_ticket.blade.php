@@ -52,13 +52,11 @@
                                 <input type="text" class="form-control" name="order_status" readonly value="{{ $t->order_status }}">
                             </div>
                             @if ($t -> order_status == "pending")
-                            <div class="form-group mt-3">
-                                <form action="/admin/ticket/accept/{{$tickets[0] -> ticket_id}}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <input type="submit" class="btn btn-success" value="Accept Ticket">
-                                </form>
-                            </div>
+                            <form action="/admin/ticket/accept/{{$t -> ticket_id}}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input type="submit" class="btn btn-success" value="Accept Ticket">
+                            </form>
                             @else
                             @endif
                             @endforeach
