@@ -56,7 +56,7 @@ class TransactionController extends Controller
         return view('bookings', compact('book', 'total_bookings'));
     }
 
-    public function view_ticket()
+    public function view_ticket(string $id)
     {
         $tickets = Transaction::query()
             ->select('ticket_id', 'buses.bus_id', 'destination', 'arrival_time', 'departure_time', 'transactions.total_price', 'order_date', 'order_status', 'type')
@@ -64,7 +64,7 @@ class TransactionController extends Controller
             ->join('bus_schedules', 'bus_schedules.bus_schedule_id', '=', 'tickets.bus_schedule_id')
             ->join('buses', 'buses.bus_id', '=', 'bus_schedules.bus_id')
             ->join('bus_routes', 'bus_routes.bus_route_id', '=', 'buses.bus_route_id')
-            ->where('tickets.ticket_id', '=', Session::get('user_id'))
+            ->where('tickets.ticket_id', '=', $id)
             ->get();
 
         return view('ticket', compact('tickets'));
