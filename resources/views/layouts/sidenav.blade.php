@@ -5,5 +5,4 @@
     <a href="/admin/drivers">Drivers</a>
     <a href="/admin/schedules">Schedules</a>
     <a href="/admin/bookings">Bookings</a>
-    <a href="#">Manage Admins</a>
 </div>
