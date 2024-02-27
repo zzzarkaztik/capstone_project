@@ -34,7 +34,7 @@ class TransactionController extends Controller
             ->join('bus_schedules', 'bus_schedules.bus_schedule_id', '=', 'tickets.bus_schedule_id')
             ->join('buses', 'buses.bus_id', '=', 'bus_schedules.bus_id')
             ->join('bus_routes', 'bus_routes.bus_route_id', '=', 'buses.bus_route_id')
-            ->where('tickets.ticket_id', '=', $id)
+            ->where('transactions.transaction_id', '=', $id)
             ->get();
 
         return view('bookings_ticket', compact('tickets'));
@@ -64,11 +64,7 @@ class TransactionController extends Controller
             ->join('bus_schedules', 'bus_schedules.bus_schedule_id', '=', 'tickets.bus_schedule_id')
             ->join('buses', 'buses.bus_id', '=', 'bus_schedules.bus_id')
             ->join('bus_routes', 'bus_routes.bus_route_id', '=', 'buses.bus_route_id')
-<<<<<<< HEAD
             ->where('tickets.ticket_id', '=', $id)
-=======
-            ->where('transactions.transaction_id', '=', $id)
->>>>>>> c877dfa (string)
             ->get();
 
         return view('ticket', compact('tickets'));

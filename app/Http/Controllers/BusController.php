@@ -35,7 +35,6 @@ class BusController extends Controller
             ->first();
 
 
-
         return view('bus_profile', compact('bus'));
     }
     // Maynard end
